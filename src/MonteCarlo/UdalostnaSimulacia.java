@@ -22,7 +22,9 @@ public class UdalostnaSimulacia extends SimJadro{
                 System.out.println("Zly cas!");
             }
             simCas = udalost.getCasUdalosti();
+
             udalost.execute();
+            refreshGUI();
         }
     }
 

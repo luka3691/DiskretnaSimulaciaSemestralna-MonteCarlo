@@ -2,15 +2,18 @@ package MonteCarlo;
 
 import MonteCarlo.Udalosti.Udalost;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.PriorityQueue;
 
 public abstract class SimJadro {
     private int numberOfReplications;
     private volatile boolean stopRequested = false;
-
+    private List<ISimDelegate> delegates;
 
     public SimJadro(int numberOfReplications) {
         this.numberOfReplications = numberOfReplications;
+        delegates = new ArrayList<>();
     }
 
     public void simuluj() {
@@ -21,6 +24,18 @@ public abstract class SimJadro {
             afterRep();
         }
         afterReps();
+    }
+
+    public void registerDelegate(ISimDelegate delegate)
+    {
+        delegates.add(delegate);
+    }
+    protected void refreshGUI()
+    {
+        for (ISimDelegate delegate : delegates)
+        {
+            delegate.refresh(this);
+        }
     }
 
     abstract void doRep();
