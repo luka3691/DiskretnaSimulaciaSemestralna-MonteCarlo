@@ -4,30 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25cfbe7a-dbb8-442f-9067-a1df747ef9f5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Osoby/Osoba.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Osoby/StavyOsoby.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/Deterministicke.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/DiskretneRovnomerne.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/Exponencialne.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/IRozdelenie.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/Poissonovo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/SpojiteEmpiricke.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/SpojiteRovnomerne.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/Triangularne.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/SimJadro.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Stanok.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Statistika.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/KoniecObsluhy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/PrichodZakaznika.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/Udalost.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/UdalostComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/ZačiatokObsluhy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/UdalostnaSimulacia.java" afterDir="false" />
+    <list default="true" id="25cfbe7a-dbb8-442f-9067-a1df747ef9f5" name="Changes" comment="Funkcny stanok">
+      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/NahodneJavy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/ObsluzneMiesta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Osoby/OsobaComparatorNoPriority.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Osoby/OsobaComparatorPriority.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Osoby/TypZakaznika.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Pokladne.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/KoniecPlatenia.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/KoniecZdavaniaDoAutomatu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/PrevzatieNadrozmernehoTovaru.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/ZačiatokPlatenia.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/ZačiatokZadavaniaDoAutomatu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Osoby/Osoba.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Osoby/Osoba.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Osoby/StavyOsoby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Osoby/StavyOsoby.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/DiskretneRovnomerne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/DiskretneRovnomerne.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/Exponencialne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/Exponencialne.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/Poissonovo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/Poissonovo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/SpojiteEmpiricke.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/SpojiteEmpiricke.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/SpojiteRovnomerne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/SpojiteRovnomerne.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Stanok.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Stanok.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/KoniecObsluhy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/KoniecObsluhy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/PrichodZakaznika.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/PrichodZakaznika.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/ZačiatokObsluhy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/ZačiatokObsluhy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,38 +45,47 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2eMuHjy0cI6IpakxbjhB8zi0lMP" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15625",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15625&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="MonteCarlo.Osoby" />
+      <recent name="MonteCarlo.Udalosti" />
     </key>
   </component>
   <component name="RunManager">
@@ -108,18 +118,55 @@
       <option name="presentableId" value="Default" />
       <updated>1711726686593</updated>
       <workItem from="1711726689866" duration="27707000" />
+      <workItem from="1711967945182" duration="28794000" />
     </task>
+    <task id="LOCAL-00001" summary="Funkcny stanok">
+      <option name="closed" value="true" />
+      <created>1711968191149</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1711968191149</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="stanok/celkova" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Funkcny stanok" />
+    <option name="LAST_COMMIT_MESSAGE" value="Funkcny stanok" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/MonteCarlo/Stanok.java</url>
-          <line>66</line>
+          <line>74</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>

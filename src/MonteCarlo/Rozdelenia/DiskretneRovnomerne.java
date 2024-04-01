@@ -6,8 +6,14 @@ public class DiskretneRovnomerne implements IRozdelenie{
     private Random random;
     private final int min;
     private final int max;
+    private int seed = 1;
+    public DiskretneRovnomerne(int min, int max) {
+        this.min = min;
+        this.max = max;
+        this.random = new Random(seed);
+    }
 
-    public DiskretneRovnomerne(int min, int max, Random random) {
+    public DiskretneRovnomerne(int min, int max, int seed) {
         this.min = min;
         this.max = max;
         this.random = new Random();

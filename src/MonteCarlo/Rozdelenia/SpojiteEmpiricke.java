@@ -9,9 +9,22 @@ public class SpojiteEmpiricke implements IRozdelenie{
     private Random random;
     private List<Double[]> hranice;
     private List<Double> kumutativnePravdepodobnosti;
+    private int seed = 1;
 
-    public SpojiteEmpiricke(List<Double[]> hranice, List<Double> pravdepodobnosti, Random random) {
-        this.random = new Random(random.nextInt());
+    public SpojiteEmpiricke(List<Double[]> hranice, List<Double> pravdepodobnosti) {
+        this.random = new Random(seed);
+        this.hranice = hranice;
+        this.kumutativnePravdepodobnosti = new ArrayList<>();
+
+        double kumutativnaPravdepodobnost = 0.0;
+        for (Double aDouble : pravdepodobnosti) {
+            kumutativnaPravdepodobnost += aDouble;
+            this.kumutativnePravdepodobnosti.add(kumutativnaPravdepodobnost);
+        }
+    }
+
+    public SpojiteEmpiricke(List<Double[]> hranice, List<Double> pravdepodobnosti, int seed) {
+        this.random = new Random(seed);
         this.hranice = hranice;
         this.kumutativnePravdepodobnosti = new ArrayList<>();
 

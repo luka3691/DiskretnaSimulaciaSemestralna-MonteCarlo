@@ -3,10 +3,10 @@ package MonteCarlo;
 import MonteCarlo.Rozdelenia.Deterministicke;
 import MonteCarlo.Rozdelenia.Exponencialne;
 import MonteCarlo.Osoby.Osoba;
+import MonteCarlo.Rozdelenia.SpojiteRovnomerne;
 import MonteCarlo.Udalosti.PrichodZakaznika;
 
 import java.util.LinkedList;
-import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Random;
 
@@ -14,35 +14,42 @@ public class Stanok extends UdalostnaSimulacia{
     private Queue<Osoba> osobyQueue;
     private int personIndex;
     private double cas; // v sekundach
+    private ObsluzneMiesta obsluzneMiesta;
 
-    private Deterministicke obsluha;
-    private Exponencialne prichodLudi;
-    //private Statistika priemerPocetLudi;
     private Statistika priemerCasVObchode;
     private Statistika priemerDlzkaRadu;
     private Statistika priemerPocetLudiCelkovy;
     private Statistika priemerCasVObchodeCelkovy;
     private Statistika priemerDlzkaRaduCelkovy;
+    private Statistika priemerCakanieVRadeCelkovy;
+    private Statistika priemerCakanieVRade;
 
-    private boolean pokladnaIsEmpty;
+    private boolean automatIsEmpty;
 
     private double zaciatokCasu;
     private double koniecCasu;
+    private NahodneJavy nahodnyJav;
+    private Pokladne pokladne;
 
-    public Stanok(int numberOfReplications) {
+    public Stanok(int numberOfReplications, int pocetObsluznychMiest, int pocetPokladni) {
         super(numberOfReplications);
         this.osobyQueue = new LinkedList<>();
         this.zaciatokCasu = 0;
         this.koniecCasu = 8*60;
+        obsluzneMiesta = new ObsluzneMiesta(pocetObsluznychMiest);
+        pokladne = new Pokladne(pocetPokladni);
+
     }
 
     @Override
     void beforeReps() {
-        obsluha = new Deterministicke(4);
-        prichodLudi = new Exponencialne(new Random(), (double)60/12);
+
+        nahodnyJav = new NahodneJavy();
+
         priemerPocetLudiCelkovy = new Statistika(false);
         priemerCasVObchodeCelkovy = new Statistika(false);
         priemerDlzkaRaduCelkovy = new Statistika(false);
+        priemerCakanieVRadeCelkovy = new Statistika(false);
 
 
     }
@@ -53,8 +60,9 @@ public class Stanok extends UdalostnaSimulacia{
         this.personIndex = 0;
         priemerCasVObchode = new Statistika(false);
         priemerDlzkaRadu = new Statistika(true);
-        pokladnaIsEmpty = true;
-        udalostiQueue.add(new PrichodZakaznika(this, simCas + prichodLudi.sample()));
+        priemerCakanieVRade = new Statistika(false);
+        automatIsEmpty = true;
+        udalostiQueue.add(new PrichodZakaznika(this, simCas + nahodnyJav.getPrichodLudi()));
     }
 
 
@@ -80,12 +88,8 @@ public class Stanok extends UdalostnaSimulacia{
         return this.personIndex;
     }
 
-    public int getVolnaPokladna() {
-        if (pokladnaIsEmpty) {
-            return 1;
-        } else {
-            return 0;
-        }
+    public boolean getAutomatIsEmpty() {
+        return automatIsEmpty;
     }
 
     public Statistika getPriemerCasVObchode() {
@@ -100,19 +104,23 @@ public class Stanok extends UdalostnaSimulacia{
         return osobyQueue;
     }
 
-    public Deterministicke getObsluha() {
-        return obsluha;
-    }
-
-    public Exponencialne getPrichodLudi() {
-        return prichodLudi;
+    public NahodneJavy getNahodnyJav() {
+        return nahodnyJav;
     }
 
     public double getKoniecCasu() {
         return koniecCasu;
     }
 
-    public void setPokladnaIsEmpty(boolean pokladnaIsEmpty) {
-        this.pokladnaIsEmpty = pokladnaIsEmpty;
+    public void setAutomatIsEmpty(boolean automatIsEmpty) {
+        this.automatIsEmpty = automatIsEmpty;
+    }
+
+    public ObsluzneMiesta getObsluzneMiesta() {
+        return obsluzneMiesta;
+    }
+
+    public Pokladne getPokladne() {
+        return pokladne;
     }
 }
