@@ -1,0 +1,38 @@
+
+	Distribution Summary
+
+Distribution:	Lognormal    
+Expression:	0.1 + LOGN(1.52, 2.59)
+Square Error:	0.003920
+
+Chi Square Test
+  Number of intervals	= 6
+  Degrees of freedom 	= 3
+  Test Statistic     	= 9.78e+003
+  Corresponding p-value	< 0.005
+
+	Data Summary
+
+Number of Data Points	= 100000
+Min Data Value       	= 0.1
+Max Data Value       	= 4.8
+Sample Mean          	= 1.38
+Sample Std Dev       	= 1.18
+
+	Histogram Summary
+
+Histogram Range    	= 0.1 to 4.8
+Number of Intervals	= 6
+
+
+==================================================================
+Int.   No. of               Probability           Cumulative      
+No.    Data Pts.   x        Density               Distribution    
+------------------------------------------------------------------
+                            Data   Function       Data   Function   
+   0  49060      0.883      0.491      0.508      0.491      0.508
+   1  21258       1.67      0.213      0.222      0.703      0.730
+   2  9198       2.45     0.0920      0.102      0.795      0.832
+   3  8906       3.23     0.0891     0.0548      0.884      0.887
+   4  7689       4.02     0.0769     0.0328      0.961      0.919
+   5  3889       4.80     0.0389     0.0211       1.00      0.940

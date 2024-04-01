@@ -84,4 +84,12 @@ public class ObsluzneMiesta {
             osobyQueue.add(osoba);
         }
     }
+
+    public Queue<Osoba> getOsobyQueue() {
+        return osobyQueue;
+    }
+
+    public Queue<Osoba> getOnlineQueue() {
+        return onlineQueue;
+    }
 }

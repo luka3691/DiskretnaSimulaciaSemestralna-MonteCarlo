@@ -1,0 +1,17 @@
+Fit All
+
+Document:  C:\Users\luka3\Desktop\testRozdelení\spojiteEmpiricke.txt
+Data File: C:\Users\luka3\Desktop\testRozdelení\spojiteEmpiricke.txt
+
+
+Function       Sq Error
+-----------------------
+Beta           0.00383
+Lognormal      0.00392
+Exponential    0.00611
+Erlang         0.00611
+Weibull        0.0074
+Gamma          0.0105
+Triangular     0.0838
+Normal         0.108
+Uniform        0.143

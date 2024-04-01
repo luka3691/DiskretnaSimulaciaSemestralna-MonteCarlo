@@ -5,6 +5,8 @@ import MonteCarlo.Osoby.TypZakaznika;
 import MonteCarlo.Stanok;
 import MonteCarlo.UdalostnaSimulacia;
 
+import java.util.Queue;
+
 public class KoniecObsluhy extends Udalost{
     Osoba osoba;
     public KoniecObsluhy(UdalostnaSimulacia jadro,double casUdalosti, Osoba osoba) {
@@ -36,10 +38,16 @@ public class KoniecObsluhy extends Udalost{
             int idRaduNaZaradenie = stanok.getPokladne().getIDNajmensiehoRadu(stanok.getNahodnyJav().getNahodnePostavanieDoRadu());
             stanok.getPokladne().getRady()[idRaduNaZaradenie].add(osoba);
         }
-        if (obsluzneDanehoTypu[osoba.getIdObsluzneho()]) {
-            Osoba novaOsoba = stanok.getOsobyQueue().poll();
+        Queue<Osoba> queue;
+        if (osoba.getTypZakaznika() == TypZakaznika.ONLINE) {
+            queue = stanok.getObsluzneMiesta().getOnlineQueue();
+        } else {
+            queue = stanok.getObsluzneMiesta().getOsobyQueue();
+        }
+        if (obsluzneDanehoTypu[osoba.getIdObsluzneho()] && !queue.isEmpty()) {
+            Osoba novaOsoba = queue.poll();
             //tu treba zaznamenat dlzku radu (pretoze sa meni velkost radu)
-            stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
+            //stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
             int id = stanok.getObsluzneMiesta().getIDVolnaPokladna(novaOsoba);
             if (id != -1) {
                 stanok.naplanujUdalost(new ZačiatokObsluhy(stanok, stanok.getSimCas(), novaOsoba, id));
