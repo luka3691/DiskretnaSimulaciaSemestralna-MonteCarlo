@@ -31,7 +31,7 @@ public class KoniecObsluhy extends Udalost{
         obsluzneDanehoTypu[osoba.getIdObsluzneho()] = !osoba.isNechalTovarNaVydajni();
         if (idPokladneNaZaradenie != -1) {
             //pokladna je volna
-            stanok.getPokladne().getPokladne()[idPokladneNaZaradenie] = false;
+            //stanok.getPokladne().getPokladne()[idPokladneNaZaradenie] = false;
             stanok.naplanujUdalost(new ZačiatokPlatenia(stanok, stanok.getSimCas(), osoba, idPokladneNaZaradenie));
         } else {
             //zaradenie do najkratsieho radu

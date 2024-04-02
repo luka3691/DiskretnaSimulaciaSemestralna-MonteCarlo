@@ -61,9 +61,9 @@ public class NahodneJavy {
 
         prichodLudi = new Exponencialne((double)60/30, random.nextInt());
         typZakaznikaGenerator = new SpojiteRovnomerne(0.0, 1.0, random.nextInt());
-        casZadavaniaDoAutomatu = new SpojiteRovnomerne(30.0, 180.0, random.nextInt());
-        casNaNadiktovanieObjednavky = new SpojiteRovnomerne(60.0, 900.0, random.nextInt());
-        casNaOdovzadnieOnlineTovaru = new Triangularne(60.0, 480.0, 120.0, random.nextInt());
+        casZadavaniaDoAutomatu = new SpojiteRovnomerne(30.0/60, 180.0/60, random.nextInt());
+        casNaNadiktovanieObjednavky = new SpojiteRovnomerne(60.0/60, 900.0/60, random.nextInt());
+        casNaOdovzadnieOnlineTovaru = new Triangularne(60.0/60, 480.0/60, 120.0/60, random.nextInt());
         nechaTovarNaObsluznom = new SpojiteRovnomerne(0.0, 1.0, random.nextInt());
         spatnePrevzatieVelkehoTovaru = new SpojiteRovnomerne(30.0, 70.0, random.nextInt());
 
@@ -73,8 +73,8 @@ public class NahodneJavy {
         casPripravaZlozitej = new SpojiteEmpiricke(Arrays.asList(new Double[]{11.0, 12.0}, new Double[]{12.0, 20.0}, new Double[]{20.0, 25.0}), Arrays.asList( 0.1, 0.6, 0.3), random.nextInt());
 
         generovanieTypuPlatby = new SpojiteRovnomerne(0.0, 1.0, random.nextInt());
-        trvaniePlatbyHotovost = new DiskretneRovnomerne(180, 480, random.nextInt());
-        trvaniePlatbyKrata = new DiskretneRovnomerne(180, 360, random.nextInt());
+        trvaniePlatbyHotovost = new DiskretneRovnomerne(180/60, 480/60, random.nextInt());
+        trvaniePlatbyKrata = new DiskretneRovnomerne(180/60, 360/60, random.nextInt());
 
         nahodnePostavanieDoRadu = new SpojiteRovnomerne(0.0, 1.0, random.nextInt());
         nahodnePostavenieDoPokladne = new SpojiteRovnomerne(0.0, 1.0, random.nextInt());

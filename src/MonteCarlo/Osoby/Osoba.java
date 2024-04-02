@@ -11,7 +11,6 @@ public class Osoba {
     private int idPokladne;
     private int idObsluzneho;
 
-    private boolean nadrozmernaObjednavka;
 
 
     public Osoba(StavyOsoby stav, double casPrichodu, int ID, TypZakaznika typZakaznika) {
@@ -33,9 +32,6 @@ public class Osoba {
         return nechalTovarNaVydajni;
     }
 
-    public void setNechalTovarNaVydajni(boolean nechalTovarNaVydajni) {
-        this.nechalTovarNaVydajni = nechalTovarNaVydajni;
-    }
 
     public TypZakaznika getTypZakaznika() {
         return typZakaznika;
@@ -61,13 +57,12 @@ public class Osoba {
         this.idObsluzneho = idObsluzneho;
     }
 
-    public boolean isNadrozmernaObjednavka() {
-        return nadrozmernaObjednavka;
-    }
 
     public void setNadrozmernaObjednavka(boolean nadrozmernaObjednavka) {
-        this.nadrozmernaObjednavka = nadrozmernaObjednavka;
+        this.nechalTovarNaVydajni = nadrozmernaObjednavka;
     }
 
-
+    public int getID() {
+        return ID;
+    }
 }

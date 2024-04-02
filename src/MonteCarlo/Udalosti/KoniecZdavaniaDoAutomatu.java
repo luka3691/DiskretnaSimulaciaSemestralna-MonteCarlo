@@ -28,12 +28,16 @@ public class KoniecZdavaniaDoAutomatu extends Udalost{
         int id = stanok.getObsluzneMiesta().getIDVolnaPokladna(osoba);
         if (id != -1) {
             stanok.naplanujUdalost(new ZačiatokObsluhy(stanok, stanok.getSimCas(), osoba, id));
+            stanok.setAutomatIsEmpty(true);
         } else {
             stanok.getObsluzneMiesta().zaradDoRadu(osoba);
+            if (stanok.getObsluzneMiesta().zmestiSa()) {
+                stanok.setAutomatIsEmpty(true);
+            }
             osoba.setStav(StavyOsoby.V_RADE_PRED_OSBLUHOU);
         };
-        stanok.setAutomatIsEmpty(true);
-
+        //
+        stanok.setOsobaUAutomatu(null);
         if (!stanok.getOsobyQueue().isEmpty() && stanok.getObsluzneMiesta().zmestiSa()) {
             Osoba novaOsoba = stanok.getOsobyQueue().poll();
             //tu treba zaznamenat dlzku radu (pretoze sa meni velkost radu)

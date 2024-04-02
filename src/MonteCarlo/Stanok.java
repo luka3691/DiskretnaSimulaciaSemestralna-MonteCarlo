@@ -1,5 +1,6 @@
 package MonteCarlo;
 
+import MonteCarlo.Osoby.OsobaComparatorNoPriority;
 import MonteCarlo.Rozdelenia.Deterministicke;
 import MonteCarlo.Rozdelenia.Exponencialne;
 import MonteCarlo.Osoby.Osoba;
@@ -7,11 +8,12 @@ import MonteCarlo.Rozdelenia.SpojiteRovnomerne;
 import MonteCarlo.Udalosti.PrichodZakaznika;
 
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Random;
 
 public class Stanok extends UdalostnaSimulacia{
-    private Queue<Osoba> osobyQueue;
+    private PriorityQueue<Osoba> osobyQueue;
     private int personIndex;
     private double cas; // v sekundach
     private ObsluzneMiesta obsluzneMiesta;
@@ -23,6 +25,7 @@ public class Stanok extends UdalostnaSimulacia{
     private Statistika priemerDlzkaRaduCelkovy;
     private Statistika priemerCakanieVRadeCelkovy;
     private Statistika priemerCakanieVRade;
+    private Osoba osobaUAutomatu = null;
 
     private boolean automatIsEmpty;
 
@@ -33,7 +36,7 @@ public class Stanok extends UdalostnaSimulacia{
 
     public Stanok(int numberOfReplications, int pocetObsluznychMiest, int pocetPokladni) {
         super(numberOfReplications);
-        this.osobyQueue = new LinkedList<>();
+        this.osobyQueue = new PriorityQueue<>(new OsobaComparatorNoPriority());
         this.zaciatokCasu = 0;
         this.koniecCasu = 8*60;
         obsluzneMiesta = new ObsluzneMiesta(pocetObsluznychMiest);
@@ -122,5 +125,13 @@ public class Stanok extends UdalostnaSimulacia{
 
     public Pokladne getPokladne() {
         return pokladne;
+    }
+
+    public Osoba getOsobaUAutomatu() {
+        return osobaUAutomatu;
+    }
+
+    public void setOsobaUAutomatu(Osoba osobaUAutomatu) {
+        this.osobaUAutomatu = osobaUAutomatu;
     }
 }
