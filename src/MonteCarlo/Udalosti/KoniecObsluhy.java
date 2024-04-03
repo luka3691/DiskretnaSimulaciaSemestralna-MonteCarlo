@@ -21,7 +21,7 @@ public class KoniecObsluhy extends Udalost{
         //tu treba zaznamenat cas v obchode do statistiky
         osoba.setStav(StavyOsoby.V_RADE_PRED_POKLADNOU);
         //stanok.getPriemerCasVObchode().pridajZaznam(stanok.getSimCas() - osoba.getCasPrichodu());
-        int idPokladneNaZaradenie = stanok.getPokladne().zaradNahodneDoPokladne(stanok.getNahodnyJav().getNahodnePostavenieDoPokladne());
+        int idPokladneNaZaradenie = stanok.getPokladne().getIDPokladne(stanok.getNahodnyJav().getNahodnePostavenieDoPokladne());
         boolean[] obsluzneDanehoTypu;
         if (osoba.getTypZakaznika() == TypZakaznika.ONLINE) {
             obsluzneDanehoTypu = stanok.getObsluzneMiesta().getOnlineObsluzne();
@@ -54,6 +54,6 @@ public class KoniecObsluhy extends Udalost{
             }
 
         }
-        stanok.setAutomatIsEmpty(true);
+        //stanok.setAutomatIsEmpty(true);
     }
 }
