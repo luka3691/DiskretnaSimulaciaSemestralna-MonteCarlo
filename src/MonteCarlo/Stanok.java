@@ -23,6 +23,8 @@ public class Stanok extends UdalostnaSimulacia{
     private Statistika priemerPocetLudiCelkovy;
     private Statistika priemerCasVObchodeCelkovy;
     private Statistika priemerDlzkaRaduCelkovy;
+    private Statistika priemerCakanieVRadePredAutomatomCalkovy;
+    private Statistika priemerCakanieVRadePredAutomatom;
     private Statistika priemerCakanieVRadeCelkovy;
     private Statistika priemerCakanieVRade;
     private Osoba osobaUAutomatu = null;
@@ -53,6 +55,7 @@ public class Stanok extends UdalostnaSimulacia{
         priemerCasVObchodeCelkovy = new Statistika(false);
         priemerDlzkaRaduCelkovy = new Statistika(false);
         priemerCakanieVRadeCelkovy = new Statistika(false);
+        priemerCakanieVRadePredAutomatomCalkovy = new Statistika(false);
 
 
     }
@@ -64,6 +67,7 @@ public class Stanok extends UdalostnaSimulacia{
         priemerCasVObchode = new Statistika(false);
         priemerDlzkaRadu = new Statistika(true);
         priemerCakanieVRade = new Statistika(false);
+        priemerCakanieVRadePredAutomatom = new Statistika(false);
         automatIsEmpty = true;
         udalostiQueue.add(new PrichodZakaznika(this, simCas + nahodnyJav.getPrichodLudi()));
     }
@@ -77,6 +81,7 @@ public class Stanok extends UdalostnaSimulacia{
         priemerPocetLudiCelkovy.pridajZaznam(personIndex);
         priemerDlzkaRaduCelkovy.pridajZaznam(priemerDlzkaRadu.vypocitaj());
         priemerCasVObchodeCelkovy.pridajZaznam(priemerCasVObchode.vypocitaj());
+        priemerCakanieVRadePredAutomatomCalkovy.pridajZaznam(priemerCakanieVRadePredAutomatom.vypocitaj());
 
     }
     @Override
@@ -84,6 +89,7 @@ public class Stanok extends UdalostnaSimulacia{
         System.out.println("Primer pocet ludi: " + priemerPocetLudiCelkovy.vypocitaj());
         System.out.println("Primer dlzka radu: " + priemerDlzkaRaduCelkovy.vypocitaj());
         System.out.println("Primer cas v obchode: " + priemerCasVObchodeCelkovy.vypocitaj());
+        System.out.println("Priemer cakanie pred automatom: " + priemerCakanieVRadePredAutomatomCalkovy.vypocitaj());
     }
 
     public int getNewPersonIndex() {
@@ -133,5 +139,9 @@ public class Stanok extends UdalostnaSimulacia{
 
     public void setOsobaUAutomatu(Osoba osobaUAutomatu) {
         this.osobaUAutomatu = osobaUAutomatu;
+    }
+
+    public Statistika getPriemerCakanieVRadePredAutomatom() {
+        return priemerCakanieVRadePredAutomatom;
     }
 }
