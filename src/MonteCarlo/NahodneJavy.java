@@ -65,7 +65,7 @@ public class NahodneJavy {
         casNaNadiktovanieObjednavky = new SpojiteRovnomerne(60.0/60, 900.0/60, random.nextInt());
         casNaOdovzadnieOnlineTovaru = new Triangularne(60.0/60, 480.0/60, 120.0/60, random.nextInt());
         nechaTovarNaObsluznom = new SpojiteRovnomerne(0.0, 1.0, random.nextInt());
-        spatnePrevzatieVelkehoTovaru = new SpojiteRovnomerne(30.0, 70.0, random.nextInt());
+        spatnePrevzatieVelkehoTovaru = new SpojiteRovnomerne(30.0/60, 70.0/60, random.nextInt());
 
         generovanieZlozitosti = new SpojiteRovnomerne(0.0, 1.0, random.nextInt());
         casPripravaJednoduchej = new SpojiteEmpiricke(Arrays.asList(new Double[]{2.0, 5.0}, new Double[]{5.0, 9.0}), Arrays.asList( 0.6, 0.4), random.nextInt());
