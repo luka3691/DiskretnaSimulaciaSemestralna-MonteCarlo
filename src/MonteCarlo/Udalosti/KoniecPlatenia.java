@@ -23,6 +23,7 @@ public class KoniecPlatenia extends Udalost{
             stanok.naplanujUdalost(new PrevzatieNadrozmernehoTovaru(stanok, stanok.getSimCas() + stanok.getNahodnyJav().getSpatnePrevzatieTovaru(), osoba));
         } else {
             osoba.setStav(StavyOsoby.ODCHADZA);
+            stanok.getPriemerCasVObchode().pridajZaznam(stanok.getSimCas() - osoba.getCasPrichodu());
         }
         if (!stanok.getPokladne().getRady()[osoba.getIdPokladne()].isEmpty()) {
             Osoba osobaNova = stanok.getPokladne().getRady()[osoba.getIdPokladne()].poll();

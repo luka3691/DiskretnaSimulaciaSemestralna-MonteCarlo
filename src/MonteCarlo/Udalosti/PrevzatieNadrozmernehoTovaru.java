@@ -28,6 +28,8 @@ public class PrevzatieNadrozmernehoTovaru extends Udalost{
             queue = stanok.getObsluzneMiesta().getOsobyQueue();
         }
 
+        stanok.getPriemerCasVObchode().pridajZaznam(stanok.getSimCas() - osoba.getCasPrichodu());
+
         if (!queue.isEmpty()) {
             Osoba novaOsoba = queue.poll();
             //tu treba zaznamenat dlzku radu (pretoze sa meni velkost radu)
