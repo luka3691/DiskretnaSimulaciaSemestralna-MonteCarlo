@@ -29,8 +29,14 @@ public class ObsluzneMiesta {
 
     }
 
-    public boolean zmestiSa() {
-        if (osobyQueue.size() + onlineQueue.size() <= 8) {
+    public boolean zmestiSa(boolean jeNiektoVAutomate) {
+        int plusJeden;
+        if (jeNiektoVAutomate) {
+            plusJeden = 1;
+        } else {
+            plusJeden = 0;
+        }
+        if (osobyQueue.size() + onlineQueue.size() + plusJeden <= 9) {
             return true;
         }
         return false;

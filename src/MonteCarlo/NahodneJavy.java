@@ -120,9 +120,9 @@ public class NahodneJavy {
     public double getTravniePlatby() {
         double typPlatby = generovanieTypuPlatby.sample();
         if (typPlatby < 0.4) {
-            return trvaniePlatbyHotovost.sample()/60.0;
+            return trvaniePlatbyHotovost.sample();
         } else {
-            return trvaniePlatbyKrata.sample()/60.0;
+            return trvaniePlatbyKrata.sample();
         }
     }
 

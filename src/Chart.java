@@ -146,7 +146,7 @@ public class Chart extends JFrame implements ISimDelegate {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new Chart("Splatená suma", 7, 5));
+        SwingUtilities.invokeLater(() -> new Chart("Splatená suma", 7, 2));
     }
 
 

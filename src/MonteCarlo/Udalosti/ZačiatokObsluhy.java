@@ -34,7 +34,7 @@ public class ZačiatokObsluhy extends Udalost {
         } else {
             stanok.naplanujUdalost(new KoniecObsluhy(stanok, stanok.getSimCas() + stanok.getNahodnyJav().getCasNaNadiktovanieObjednavky() + stanok.getNahodnyJav().getTravnieObjednavky(), osoba));
         }
-        if (!stanok.getOsobyQueue().isEmpty() && stanok.getObsluzneMiesta().zmestiSa() && !stanok.getAutomatIsEmpty()) {
+        if (!stanok.getOsobyQueue().isEmpty() && stanok.getObsluzneMiesta().zmestiSa(stanok.getAutomatIsEmpty()) && stanok.getAutomatIsEmpty()) {
             Osoba novaOsoba = stanok.getOsobyQueue().poll();
             //tu treba zaznamenat dlzku radu (pretoze sa meni velkost radu)
             stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());

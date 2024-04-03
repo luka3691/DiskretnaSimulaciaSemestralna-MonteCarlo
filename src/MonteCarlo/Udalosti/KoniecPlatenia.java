@@ -24,5 +24,9 @@ public class KoniecPlatenia extends Udalost{
         } else {
             osoba.setStav(StavyOsoby.ODCHADZA);
         }
+        if (!stanok.getPokladne().getRady()[osoba.getIdPokladne()].isEmpty()) {
+            Osoba osobaNova = stanok.getPokladne().getRady()[osoba.getIdPokladne()].poll();
+            stanok.naplanujUdalost(new ZačiatokPlatenia(stanok, stanok.getSimCas(), osobaNova, osoba.getIdPokladne()));
+        }
     }
 }

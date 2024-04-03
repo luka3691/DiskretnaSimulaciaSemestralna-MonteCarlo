@@ -31,14 +31,14 @@ public class KoniecZdavaniaDoAutomatu extends Udalost{
             stanok.setAutomatIsEmpty(true);
         } else {
             stanok.getObsluzneMiesta().zaradDoRadu(osoba);
-            if (stanok.getObsluzneMiesta().zmestiSa()) {
+            if (stanok.getObsluzneMiesta().zmestiSa(stanok.getAutomatIsEmpty())) {
                 stanok.setAutomatIsEmpty(true);
             }
             osoba.setStav(StavyOsoby.V_RADE_PRED_OSBLUHOU);
         };
         //
         stanok.setOsobaUAutomatu(null);
-        if (!stanok.getOsobyQueue().isEmpty() && stanok.getObsluzneMiesta().zmestiSa()) {
+        if (!stanok.getOsobyQueue().isEmpty() && stanok.getObsluzneMiesta().zmestiSa(stanok.getAutomatIsEmpty())) {
             Osoba novaOsoba = stanok.getOsobyQueue().poll();
             //tu treba zaznamenat dlzku radu (pretoze sa meni velkost radu)
             stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());

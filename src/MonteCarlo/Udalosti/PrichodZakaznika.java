@@ -15,19 +15,22 @@ public class PrichodZakaznika extends Udalost {
         Stanok stanok = (Stanok)jadro;
         Osoba osoba = new Osoba(StavyOsoby.PRICHOD, casUdalosti, stanok.getNewPersonIndex(), stanok.getNahodnyJav().getTypZakaznika());
 
-        if (stanok.getAutomatIsEmpty() && stanok.getObsluzneMiesta().zmestiSa()) {
-            stanok.naplanujUdalost(new ZačiatokZadavaniaDoAutomatu(stanok, stanok.getSimCas(), osoba));
+        stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
+        osoba.setStav(StavyOsoby.V_RADE_PRED_AUTOMATOM);
+        stanok.getOsobyQueue().add(osoba);
+        stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
+        if (stanok.getAutomatIsEmpty() && stanok.getObsluzneMiesta().zmestiSa(stanok.getAutomatIsEmpty())) {
+            stanok.naplanujUdalost(new ZačiatokZadavaniaDoAutomatu(stanok, stanok.getSimCas(), stanok.getOsobyQueue().poll()));
         } else {
-            stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
-            osoba.setStav(StavyOsoby.V_RADE_PRED_AUTOMATOM);
-            stanok.getOsobyQueue().add(osoba);
-            stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
+
         }
 
         double dalsiPrichod = stanok.getSimCas() + stanok.getNahodnyJav().getPrichodLudi();
         //toto tu treba skontrolovat
         if (dalsiPrichod < stanok.getKoniecCasu()) {
             stanok.naplanujUdalost(new PrichodZakaznika(jadro, dalsiPrichod));
+        } else {
+            stanok.getOsobyQueue().clear();
         }
     }
 

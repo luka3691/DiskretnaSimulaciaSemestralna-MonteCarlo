@@ -50,7 +50,7 @@ public class Pokladne {
             }
         }
         double pravdepodobnost = random.sample();
-        double krok = 1.0 / prazdnePokladne.size();
+        double krok = krok = 1.0 / prazdnePokladne.size();;
         double prav = krok;
         int poradieVPrazdnych = 0;
         while (prav <= 1.0) {
@@ -96,7 +96,7 @@ public class Pokladne {
         }
         double pravdepodobnost = random.sample();
         double krok = 1.0 / prazdneRady.size();
-        double prav = 0.0;
+        double prav = krok;
         int poradieVPrazdnych = 0;
         while (prav <= 1.0) {
             if (pravdepodobnost < prav) {
