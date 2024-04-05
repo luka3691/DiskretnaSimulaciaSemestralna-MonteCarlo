@@ -4,7 +4,9 @@ import MonteCarlo.Osoby.Osoba;
 import MonteCarlo.Osoby.OsobaComparatorNoPriority;
 import MonteCarlo.Osoby.OsobaComparatorPriority;
 import MonteCarlo.Osoby.TypZakaznika;
+import MonteCarlo.Rozdelenia.SpojiteRovnomerne;
 
+import java.util.ArrayList;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -13,6 +15,7 @@ public class ObsluzneMiesta {
     private Queue<Osoba> onlineQueue;
     private boolean[] normalneObsluzne;
     private boolean[] onlineObsluzne;
+    private int pocetObsluznych;
     public ObsluzneMiesta(int pocetObsluznychMiest) {
         int pocetOnlineObsluznych =  pocetObsluznychMiest / 3;
         int poceNormalnychObsluznych = pocetObsluznychMiest - pocetOnlineObsluznych;
@@ -26,6 +29,7 @@ public class ObsluzneMiesta {
         }
         osobyQueue = new PriorityQueue<>(new OsobaComparatorPriority());
         onlineQueue = new PriorityQueue<>(new OsobaComparatorNoPriority());
+        this.pocetObsluznych = pocetObsluznychMiest;
 
     }
 
@@ -74,6 +78,8 @@ public class ObsluzneMiesta {
         }
         return -1;
     }
+
+
 
     public boolean[] getNormalneObsluzne() {
         return normalneObsluzne;

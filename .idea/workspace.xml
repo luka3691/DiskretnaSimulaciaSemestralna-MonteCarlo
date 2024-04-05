@@ -4,17 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25cfbe7a-dbb8-442f-9067-a1df747ef9f5" name="Changes" comment="Fixed rady">
+    <list default="true" id="25cfbe7a-dbb8-442f-9067-a1df747ef9f5" name="Changes" comment="Cas v rade pre automatom">
+      <change afterPath="$PROJECT_DIR$/src/GUIapp.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUIapp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Chart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Chart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/NahodneJavy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/NahodneJavy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MonteCarlo/ObsluzneMiesta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/ObsluzneMiesta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Pokladne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Pokladne.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/KoniecPlatenia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/KoniecPlatenia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/SimJadro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/SimJadro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Stanok.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Stanok.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/KoniecZdavaniaDoAutomatu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/KoniecZdavaniaDoAutomatu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/PrichodZakaznika.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/PrichodZakaznika.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/ZačiatokObsluhy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/ZačiatokObsluhy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/ZačiatokZadavaniaDoAutomatu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/ZačiatokZadavaniaDoAutomatu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/UdalostnaSimulacia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/UdalostnaSimulacia.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +27,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -38,12 +40,12 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "luka3691"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;luka3691&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -61,25 +63,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Chart.executor": "Run",
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15625",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Chart.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.GUIapp.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15625&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
@@ -93,7 +102,7 @@
       <recent name="MonteCarlo.Udalosti" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Chart">
+  <component name="RunManager" selected="Application.Unnamed">
     <configuration name="Chart" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Chart" />
       <module name="Semstralna2" />
@@ -108,10 +117,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUIapp" />
+      <module name="Semstralna2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Unnamed" />
+      <item itemvalue="Application.Chart" />
+      <item itemvalue="Application.Main" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Chart" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Chart" />
       </list>
     </recent_temporary>
   </component>
@@ -135,7 +156,10 @@
       <workItem from="1712004979948" duration="9289000" />
       <workItem from="1712033608307" duration="7142000" />
       <workItem from="1712058358888" duration="2945000" />
-      <workItem from="1712141915674" duration="9192000" />
+      <workItem from="1712141915674" duration="13019000" />
+      <workItem from="1712245272506" duration="4687000" />
+      <workItem from="1712252813248" duration="14852000" />
+      <workItem from="1712312575212" duration="1284000" />
     </task>
     <task id="LOCAL-00001" summary="Funkcny stanok">
       <option name="closed" value="true" />
@@ -185,7 +209,47 @@
       <option name="project" value="LOCAL" />
       <updated>1712174842647</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Celkom funkcne">
+      <option name="closed" value="true" />
+      <created>1712176285748</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1712176285748</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Statistika celkoveho casu v systeme">
+      <option name="closed" value="true" />
+      <created>1712177704396</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1712177704396</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Statistika celkoveho casu v systeme">
+      <option name="closed" value="true" />
+      <created>1712177713630</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1712177713630</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Fix">
+      <option name="closed" value="true" />
+      <created>1712177735300</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1712177735300</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Cas v rade pre automatom">
+      <option name="closed" value="true" />
+      <created>1712177770465</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1712177770465</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,15 +285,19 @@
     <MESSAGE value="Zacanie s gui" />
     <MESSAGE value="Upravy" />
     <MESSAGE value="Fixed rady" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed rady" />
+    <MESSAGE value="Celkom funkcne" />
+    <MESSAGE value="Statistika celkoveho casu v systeme" />
+    <MESSAGE value="Fix" />
+    <MESSAGE value="Cas v rade pre automatom" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cas v rade pre automatom" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/MonteCarlo/Udalosti/ZačiatokZadavaniaDoAutomatu.java</url>
-          <line>16</line>
-          <option name="timeStamp" value="32" />
+          <url>file://$PROJECT_DIR$/src/GUIapp.java</url>
+          <line>147</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

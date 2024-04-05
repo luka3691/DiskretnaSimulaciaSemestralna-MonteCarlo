@@ -16,7 +16,7 @@ public class ZačiatokZadavaniaDoAutomatu extends Udalost {
     public void execute() {
         Stanok stanok = (Stanok)jadro;
         stanok.setAutomatIsEmpty(false);
-        stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
+        //stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
         stanok.getPriemerCakanieVRadePredAutomatom().pridajZaznam(stanok.getSimCas() - osoba.getCasPrichodu());
         osoba.setStav(StavyOsoby.ZADAVANIE_DO_AUTOMATU);
         stanok.setOsobaUAutomatu(osoba);

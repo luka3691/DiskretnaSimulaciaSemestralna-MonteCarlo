@@ -24,7 +24,9 @@ public class UdalostnaSimulacia extends SimJadro{
             simCas = udalost.getCasUdalosti();
 
             udalost.execute();
-            refreshGUI();
+            if (slowRequested) {
+                refreshGUI();
+            }
         }
     }
 

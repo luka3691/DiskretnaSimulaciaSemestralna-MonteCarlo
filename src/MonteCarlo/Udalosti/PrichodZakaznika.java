@@ -13,20 +13,18 @@ public class PrichodZakaznika extends Udalost {
     @Override
     public void execute() {
         Stanok stanok = (Stanok)jadro;
-        Osoba osoba = new Osoba(StavyOsoby.PRICHOD, casUdalosti, stanok.getNewPersonIndex(), stanok.getNahodnyJav().getTypZakaznika());
+        Osoba osoba = new Osoba(StavyOsoby.PRICHOD, stanok.getSimCas(), stanok.getNewPersonIndex(), stanok.getNahodnyJav().getTypZakaznika());
 
         stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
         osoba.setStav(StavyOsoby.V_RADE_PRED_AUTOMATOM);
         stanok.getOsobyQueue().add(osoba);
         stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
+
         if (stanok.getAutomatIsEmpty() && stanok.getObsluzneMiesta().zmestiSa(stanok.getAutomatIsEmpty())) {
             stanok.naplanujUdalost(new ZačiatokZadavaniaDoAutomatu(stanok, stanok.getSimCas(), stanok.getOsobyQueue().poll()));
-        } else {
-
         }
 
         double dalsiPrichod = stanok.getSimCas() + stanok.getNahodnyJav().getPrichodLudi();
-        //toto tu treba skontrolovat
         if (dalsiPrichod < stanok.getKoniecCasu()) {
             stanok.naplanujUdalost(new PrichodZakaznika(jadro, dalsiPrichod));
         } else {

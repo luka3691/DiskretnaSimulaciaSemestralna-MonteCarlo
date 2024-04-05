@@ -8,7 +8,8 @@ import java.util.PriorityQueue;
 
 public abstract class SimJadro {
     private int numberOfReplications;
-    private volatile boolean stopRequested = false;
+    protected volatile boolean stopRequested = false;
+    protected volatile boolean slowRequested = true;
     private List<ISimDelegate> delegates;
 
     public SimJadro(int numberOfReplications) {
@@ -22,6 +23,9 @@ public abstract class SimJadro {
             beforeRep();
             doRep();
             afterRep();
+            if (!slowRequested) {
+                refreshGUI();
+            }
         }
         afterReps();
     }
@@ -56,5 +60,11 @@ public abstract class SimJadro {
         stopRequested = true;
     }
 
+    public void setSlowRequested(boolean slowRequested) {
+        this.slowRequested = slowRequested;
+    }
 
+    public boolean isSlowRequested() {
+        return slowRequested;
+    }
 }
