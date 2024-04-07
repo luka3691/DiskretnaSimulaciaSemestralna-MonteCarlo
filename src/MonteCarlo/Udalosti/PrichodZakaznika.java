@@ -22,6 +22,7 @@ public class PrichodZakaznika extends Udalost {
 
         if (stanok.getAutomatIsEmpty() && stanok.getObsluzneMiesta().zmestiSa(stanok.getAutomatIsEmpty())) {
             stanok.naplanujUdalost(new ZačiatokZadavaniaDoAutomatu(stanok, stanok.getSimCas(), stanok.getOsobyQueue().poll()));
+            stanok.setAutomatIsEmpty(false);
         }
 
         double dalsiPrichod = stanok.getSimCas() + stanok.getNahodnyJav().getPrichodLudi();

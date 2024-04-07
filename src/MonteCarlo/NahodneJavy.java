@@ -39,7 +39,7 @@ public class NahodneJavy {
 
         prichodLudi = new Exponencialne((double)60/30);
         typZakaznikaGenerator = new SpojiteRovnomerne(0.0, 1.0);
-        casZadavaniaDoAutomatu = new SpojiteRovnomerne(30.0/60, 180.0/60);
+        casZadavaniaDoAutomatu = new SpojiteRovnomerne(30.0/60, 120.0/60);
         casNaNadiktovanieObjednavky = new SpojiteRovnomerne(60.0/60, 900.0/60);
         casNaOdovzadnieOnlineTovaru = new Triangularne(60.0/60, 480.0/60, 120.0/60);
         nechaTovarNaObsluznom = new SpojiteRovnomerne(0.0, 1.0);

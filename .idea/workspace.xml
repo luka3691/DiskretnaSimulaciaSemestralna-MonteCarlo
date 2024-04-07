@@ -6,12 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="25cfbe7a-dbb8-442f-9067-a1df747ef9f5" name="Changes" comment="Dako funkcne">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUIapp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUIapp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MonteCarlo/NahodneJavy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/NahodneJavy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Statistika.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Statistika.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/KoniecZdavaniaDoAutomatu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/KoniecZdavaniaDoAutomatu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/ZačiatokObsluhy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/ZačiatokObsluhy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/ZačiatokZadavaniaDoAutomatu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/ZačiatokZadavaniaDoAutomatu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/PrichodZakaznika.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/PrichodZakaznika.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
