@@ -51,8 +51,8 @@ public class GUIapp implements ISimDelegate {
         JFrame frame = new JFrame("JTable Demo");
         tableOdber.setModel(odberModel);
         tablePokladne.setModel(pokladneModel);
-        pocetObsluzField.setText("10");
-        pocetPokladField.setText("5");
+        pocetObsluzField.setText("13");
+        pocetPokladField.setText("4");
         pocetReplikField.setText("25000");
         pauzaButton.setEnabled(false);
         stopButton.setEnabled(false);

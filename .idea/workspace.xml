@@ -4,19 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25cfbe7a-dbb8-442f-9067-a1df747ef9f5" name="Changes" comment="Cas v rade pre automatom">
-      <change afterPath="$PROJECT_DIR$/src/GUIapp.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUIapp.java" afterDir="false" />
+    <list default="true" id="25cfbe7a-dbb8-442f-9067-a1df747ef9f5" name="Changes" comment="Dako funkcne">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Chart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Chart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/ObsluzneMiesta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/ObsluzneMiesta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/SimJadro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/SimJadro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Stanok.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Stanok.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUIapp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUIapp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/NahodneJavy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/NahodneJavy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Statistika.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Statistika.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/KoniecZdavaniaDoAutomatu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/KoniecZdavaniaDoAutomatu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/PrichodZakaznika.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/PrichodZakaznika.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/ZačiatokObsluhy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/ZačiatokObsluhy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/ZačiatokZadavaniaDoAutomatu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/ZačiatokZadavaniaDoAutomatu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/UdalostnaSimulacia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/UdalostnaSimulacia.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +154,8 @@
       <workItem from="1712141915674" duration="13019000" />
       <workItem from="1712245272506" duration="4687000" />
       <workItem from="1712252813248" duration="14852000" />
-      <workItem from="1712312575212" duration="1284000" />
+      <workItem from="1712312575212" duration="3673000" />
+      <workItem from="1712487718527" duration="4612000" />
     </task>
     <task id="LOCAL-00001" summary="Funkcny stanok">
       <option name="closed" value="true" />
@@ -249,7 +245,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712177770465</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Dako funkcne">
+      <option name="closed" value="true" />
+      <created>1712314478279</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1712314478279</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,7 +293,8 @@
     <MESSAGE value="Statistika celkoveho casu v systeme" />
     <MESSAGE value="Fix" />
     <MESSAGE value="Cas v rade pre automatom" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cas v rade pre automatom" />
+    <MESSAGE value="Dako funkcne" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dako funkcne" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -298,6 +303,11 @@
           <url>file://$PROJECT_DIR$/src/GUIapp.java</url>
           <line>147</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/MonteCarlo/Udalosti/ZačiatokZadavaniaDoAutomatu.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

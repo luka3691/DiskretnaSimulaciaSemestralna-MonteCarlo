@@ -61,7 +61,7 @@ public class NahodneJavy {
 
         prichodLudi = new Exponencialne((double)60/30, random.nextInt());
         typZakaznikaGenerator = new SpojiteRovnomerne(0.0, 1.0, random.nextInt());
-        casZadavaniaDoAutomatu = new SpojiteRovnomerne(30.0/60, 180.0/60, random.nextInt());
+        casZadavaniaDoAutomatu = new SpojiteRovnomerne(30.0/60, 120.0/60, random.nextInt());
         casNaNadiktovanieObjednavky = new SpojiteRovnomerne(60.0/60, 900.0/60, random.nextInt());
         casNaOdovzadnieOnlineTovaru = new Triangularne(60.0/60, 480.0/60, 120.0/60, random.nextInt());
         nechaTovarNaObsluznom = new SpojiteRovnomerne(0.0, 1.0, random.nextInt());

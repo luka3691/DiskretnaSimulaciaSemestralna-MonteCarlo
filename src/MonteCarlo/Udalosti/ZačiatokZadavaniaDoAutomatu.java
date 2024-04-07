@@ -18,6 +18,7 @@ public class ZačiatokZadavaniaDoAutomatu extends Udalost {
         stanok.setAutomatIsEmpty(false);
         //stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
         stanok.getPriemerCakanieVRadePredAutomatom().pridajZaznam(stanok.getSimCas() - osoba.getCasPrichodu());
+        stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
         osoba.setStav(StavyOsoby.ZADAVANIE_DO_AUTOMATU);
         stanok.setOsobaUAutomatu(osoba);
         stanok.naplanujUdalost(new KoniecZdavaniaDoAutomatu(stanok, stanok.getSimCas()+stanok.getNahodnyJav().getCasZadavaniaDoAutomatu(), osoba));
