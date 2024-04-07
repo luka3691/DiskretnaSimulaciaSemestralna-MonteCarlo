@@ -10,9 +10,13 @@ import javax.swing.table.TableColumn;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Stack;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 
 public class GUIapp implements ISimDelegate {
+    private AtomicBoolean isStopped;
+    private AtomicBoolean isPaused;
     private JPanel panel1;
     private JTextField pocetObsluzField;
     private JTextField pocetPokladField;
@@ -29,6 +33,7 @@ public class GUIapp implements ISimDelegate {
     private JTable tableOdber;
     private DefaultTableModel odberModel = new DefaultTableModel(new String[]{"ID", "Typ pokladne", "Je volna?", "Vytazenie"}, 0);
     private DefaultTableModel pokladneModel = new DefaultTableModel(new String[]{"ID", "Je volna?", "V rade pred" , "Vytazenie"}, 0);
+    private DefaultTableModel zakazniciModel = new DefaultTableModel(new String[]{"ID", "Typ zákazníka", "Stav"}, 0);
     private JTable tablePokladne;
     private JLabel stavyZakazLabel;
     private JLabel stavyOdberLabel;
@@ -42,6 +47,8 @@ public class GUIapp implements ISimDelegate {
     private JLabel casLabel;
     private JPanel prepinaciPanel;
     private JLabel obsadenyAutomatLabel;
+    private JCheckBox porovananieCheckbox;
+    private SimJadro pausedSim;
     int pocetPokladni;
     int pocetObsluz ;
 
@@ -51,12 +58,15 @@ public class GUIapp implements ISimDelegate {
         JFrame frame = new JFrame("JTable Demo");
         tableOdber.setModel(odberModel);
         tablePokladne.setModel(pokladneModel);
+        tableZakaznici.setModel(zakazniciModel);
         pocetObsluzField.setText("13");
         pocetPokladField.setText("4");
         pocetReplikField.setText("25000");
         pauzaButton.setEnabled(false);
         stopButton.setEnabled(false);
         pomalyBeh = false;
+        isStopped = new AtomicBoolean(false);
+        isPaused = new AtomicBoolean(false);
 
         štartButton.addActionListener(new ActionListener() {
             @Override
@@ -67,6 +77,8 @@ public class GUIapp implements ISimDelegate {
                     Integer.parseInt(pocetReplikField.getText());
                     startSimulation();
                     štartButton.setEnabled(false);
+                    pauzaButton.setEnabled(true);
+                    stopButton.setEnabled(true);
                 }
                 catch (NumberFormatException i) {
                     //Nebolo zadane cislo
@@ -76,31 +88,21 @@ public class GUIapp implements ISimDelegate {
         pauzaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    Integer.parseInt(pocetObsluzField.getText());
-                    Integer.parseInt(pocetPokladField.getText());
-                    Integer.parseInt(pocetReplikField.getText());
-                    startSimulation();
-
-                }
-                catch (NumberFormatException i) {
-                    //Nebolo zadane cislo
-                }
+                    if (isPaused.get()) {
+                        unpause();
+                    } else {
+                        isPaused.set(true);
+                    }
             }
         });
         stopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    Integer.parseInt(pocetObsluzField.getText());
-                    Integer.parseInt(pocetPokladField.getText());
-                    Integer.parseInt(pocetReplikField.getText());
-                    startSimulation();
-
-                }
-                catch (NumberFormatException i) {
-                    //Nebolo zadane cislo
-                }
+                porovananieCheckbox.setEnabled(true);
+                štartButton.setEnabled(true);
+                pauzaButton.setEnabled(false);
+                stopButton.setEnabled(false);
+                isStopped.set(true);
             }
         });
         zrýchlenýBehRadioButton.addChangeListener(new ChangeListener() {
@@ -136,6 +138,12 @@ public class GUIapp implements ISimDelegate {
     }
 
     private void startSimulation() {
+        isPaused.set(false);
+        isStopped.set(false);
+
+        pokladneModel.setRowCount(0);
+        odberModel.setRowCount(0);
+        zakazniciModel.setRowCount(0);
         int pocetReplikacii = Integer.parseInt(pocetReplikField.getText());
         pocetPokladni = Integer.parseInt(pocetPokladField.getText());
         pocetObsluz = Integer.parseInt(pocetObsluzField.getText());
@@ -152,8 +160,12 @@ public class GUIapp implements ISimDelegate {
             odberModel.addRow(new Object[]{i+stanok.getObsluzneMiesta().getOnlineObsluzne().length, "NORMALNE",stanok.getObsluzneMiesta().getNormalneObsluzne()[i], 0.0});
         }
 //odstarovanie simulacie pre kazdu strategiu
-
+        if (porovananieCheckbox.isSelected()) {
+            GUIPorovnanie porovanie = new GUIPorovnanie(pocetObsluz, pocetReplikacii);
+            porovanie.startSimulation();
+        }
         simulatcia1.start();
+
     }
 
     public static void main(String[] args) {
@@ -163,10 +175,19 @@ public class GUIapp implements ISimDelegate {
     @Override
     public void refresh(SimJadro simJadro) {
         Stanok sim = (Stanok) simJadro;
+        if (isStopped.get()) {
+            sim.setStopRequested(true);
+
+        }
+        if (isPaused.get()) {
+            sim.setPaused(true);
+            pausedSim = sim;
+        }
         if (sim.isSlowRequested() != pomalyBeh) {
             sim.setSlowRequested(pomalyBeh);
         }
         if (pomalyBeh) {
+            zakazniciModel.addRow(new Object[]{sim.getStavyOsob().get(0), sim.getStavyOsob().get(1), sim.getStavyOsob().get(2)});
             casLabel.setText((int)sim.getSimCas()/60 + ":" + (int)sim.getSimCas()%60);
             pocetLudiPredAutomatom.setText(String.valueOf(sim.getOsobyQueue().size()));
             for (int i = 0; i < pocetPokladni; i++) {
@@ -196,5 +217,10 @@ public class GUIapp implements ISimDelegate {
     private void switchPanel(String panelName) {
         CardLayout cardLayout = (CardLayout) prepinaciPanel.getLayout();
         cardLayout.show(prepinaciPanel, panelName);
+    }
+
+    private void unpause() {
+        pausedSim.setPaused(false);
+        isPaused.set(false);
     }
 }

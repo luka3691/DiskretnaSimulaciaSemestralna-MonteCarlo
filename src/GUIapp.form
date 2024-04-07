@@ -380,20 +380,6 @@
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <component id="abdb5" class="javax.swing.JSlider" binding="rychlostSlider">
-                    <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <majorTickSpacing value="5"/>
-                      <minimum value="0"/>
-                      <minorTickSpacing value="5"/>
-                      <paintLabels value="true"/>
-                      <paintTicks value="true"/>
-                      <snapToTicks value="true"/>
-                      <valueIsAdjusting value="false"/>
-                    </properties>
-                  </component>
                   <component id="f694e" class="javax.swing.JLabel">
                     <constraints>
                       <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -408,6 +394,28 @@
                     </constraints>
                     <properties>
                       <text value="Time"/>
+                    </properties>
+                  </component>
+                  <component id="abdb5" class="javax.swing.JSlider" binding="rychlostSlider">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <majorTickSpacing value="5"/>
+                      <minimum value="0"/>
+                      <minorTickSpacing value="5"/>
+                      <paintLabels value="true"/>
+                      <paintTicks value="true"/>
+                      <snapToTicks value="true"/>
+                      <valueIsAdjusting value="false"/>
+                    </properties>
+                  </component>
+                  <component id="6ce62" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Spomalenie simulačného času (s väčšou hodnoutou pomalšie):"/>
                     </properties>
                   </component>
                 </children>
@@ -512,6 +520,14 @@
               </grid>
             </constraints>
             <properties/>
+          </component>
+          <component id="5886f" class="javax.swing.JCheckBox" binding="porovananieCheckbox">
+            <constraints>
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Spustiť porovnanie pri rôznom počte pokladní"/>
+            </properties>
           </component>
         </children>
       </grid>

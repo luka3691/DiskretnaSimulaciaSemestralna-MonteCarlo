@@ -15,7 +15,7 @@ public class PrichodZakaznika extends Udalost {
         Stanok stanok = (Stanok)jadro;
         Osoba osoba = new Osoba(StavyOsoby.PRICHOD, stanok.getSimCas(), stanok.getNewPersonIndex(), stanok.getNahodnyJav().getTypZakaznika());
 
-        stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
+        //stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
         osoba.setStav(StavyOsoby.V_RADE_PRED_AUTOMATOM);
         stanok.getOsobyQueue().add(osoba);
         stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
@@ -31,6 +31,7 @@ public class PrichodZakaznika extends Udalost {
         } else {
             stanok.getOsobyQueue().clear();
         }
+        stanok.setStavyOsob(osoba.toArray());
     }
 
 

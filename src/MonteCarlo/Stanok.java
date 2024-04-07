@@ -7,10 +7,7 @@ import MonteCarlo.Osoby.Osoba;
 import MonteCarlo.Rozdelenia.SpojiteRovnomerne;
 import MonteCarlo.Udalosti.PrichodZakaznika;
 
-import java.util.LinkedList;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Random;
+import java.util.*;
 
 public class Stanok extends UdalostnaSimulacia{
     private PriorityQueue<Osoba> osobyQueue;
@@ -37,9 +34,14 @@ public class Stanok extends UdalostnaSimulacia{
     private double poslednyCasOdchodu;
     private NahodneJavy nahodnyJav;
     private Pokladne pokladne;
+    private int pocetObsluznych;
+    private int pocetPokladni;
+    private ArrayList<String> stavyOsob;
 
     public Stanok(int numberOfReplications, int pocetObsluznychMiest, int pocetPokladni) {
         super(numberOfReplications);
+        this.pocetObsluznych = pocetObsluznychMiest;
+        this.pocetPokladni = pocetPokladni;
         this.osobyQueue = new PriorityQueue<>(new OsobaComparatorNoPriority());
         this.zaciatokCasu = 9*60;
         this.koniecCasu = 17*60;
@@ -74,6 +76,7 @@ public class Stanok extends UdalostnaSimulacia{
         automatIsEmpty = true;
         udalostiQueue.add(new PrichodZakaznika(this, zaciatokCasu + nahodnyJav.getPrichodLudi()));
         poslednyCasOdchodu = 0.0;
+        stavyOsob = new ArrayList<>();
     }
 
 
@@ -153,5 +156,26 @@ public class Stanok extends UdalostnaSimulacia{
 
     public Statistika getPriemerCakanieVRadePredAutomatom() {
         return priemerCakanieVRadePredAutomatom;
+    }
+
+    public int getPocetObsluznych() {
+        return pocetObsluznych;
+    }
+
+    public int getPocetPokladni() {
+        return pocetPokladni;
+    }
+
+    public Statistika getPriemerDlzkaRaduCelkovy() {
+        return priemerDlzkaRaduCelkovy;
+    }
+
+    public void setStavyOsob(ArrayList<String> stavyOsob) {
+        this.stavyOsob.clear();
+        this.stavyOsob = stavyOsob;
+    }
+
+    public ArrayList<String> getStavyOsob() {
+        return stavyOsob;
     }
 }

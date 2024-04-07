@@ -37,6 +37,7 @@ public class KoniecObsluhy extends Udalost{
             //zaradenie do najkratsieho radu
             int idRaduNaZaradenie = stanok.getPokladne().getIDNajmensiehoRadu(stanok.getNahodnyJav().getNahodnePostavanieDoRadu());
             stanok.getPokladne().getRady()[idRaduNaZaradenie].add(osoba);
+            osoba.setIdPokladne(idRaduNaZaradenie);
         }
         Queue<Osoba> queue;
         if (osoba.getTypZakaznika() == TypZakaznika.ONLINE) {
@@ -54,6 +55,7 @@ public class KoniecObsluhy extends Udalost{
             }
 
         }
+        stanok.setStavyOsob(osoba.toArray());
         //stanok.setAutomatIsEmpty(true);
     }
 }

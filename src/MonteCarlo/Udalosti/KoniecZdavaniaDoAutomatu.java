@@ -25,6 +25,7 @@ public class KoniecZdavaniaDoAutomatu extends Udalost{
 
         //tu treba zaznamenat dlzku radu (pretoze sa meni velkost radu)
         //stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
+        osoba.setStav(StavyOsoby.KONIEC_ZADAVANIA_DO_AUTOMATU);
         int id = stanok.getObsluzneMiesta().getIDVolnaPokladna(osoba);
         if (id != -1) {
             stanok.naplanujUdalost(new ZačiatokObsluhy(stanok, stanok.getSimCas(), osoba, id));
@@ -44,8 +45,7 @@ public class KoniecZdavaniaDoAutomatu extends Udalost{
             //stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
             stanok.naplanujUdalost(new ZačiatokZadavaniaDoAutomatu(stanok, stanok.getSimCas(), novaOsoba));
             stanok.setAutomatIsEmpty(false);
-
         }
-
+        stanok.setStavyOsob(osoba.toArray());
     }
 }

@@ -1,5 +1,7 @@
 package MonteCarlo.Osoby;
 
+import java.util.ArrayList;
+
 public class Osoba {
     private double casPrichodu;
     private StavyOsoby stav;
@@ -64,5 +66,30 @@ public class Osoba {
 
     public int getID() {
         return ID;
+    }
+    public ArrayList<String> toArray() {
+        ArrayList<String> infoOZakaz = new ArrayList<>() ;
+        infoOZakaz.add(String.valueOf(ID));
+        infoOZakaz.add(String.valueOf(typZakaznika));
+        if (stav == StavyOsoby.V_RADE_PRED_AUTOMATOM) {
+            infoOZakaz.add("Pred automatom");
+        } else if (stav == StavyOsoby.ZADAVANIE_DO_AUTOMATU) {
+            infoOZakaz.add("Zdava do automatu");
+        } else if (stav == StavyOsoby.V_RADE_PRED_OSBLUHOU) {
+            infoOZakaz.add("V rade pred obsluhov");
+        } else if (stav == StavyOsoby.JE_OBSLUHOVANY) {
+            infoOZakaz.add("Obsluhovany u :" + idObsluzneho);
+        } else if (stav == StavyOsoby.V_RADE_PRED_POKLADNOU) {
+            infoOZakaz.add("V rade pred pokladnou :" + idPokladne);
+        } else if (stav == StavyOsoby.JE_OBSLUHOVANY_V_POKLADNI) {
+            infoOZakaz.add("Platba u pokladne :" + idPokladne);
+        } else if (stav == StavyOsoby.ODCHADZA) {
+            infoOZakaz.add("Odišiel");
+        } else if (stav == StavyOsoby.IDE_SI_PRE_NADROZMERNY_TOVAR) {
+            infoOZakaz.add("Spätné prevzatie nadrozmerného");
+        } else {
+            infoOZakaz.add("Prichod");
+        }
+        return infoOZakaz;
     }
 }

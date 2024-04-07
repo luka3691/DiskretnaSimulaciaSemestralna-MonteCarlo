@@ -15,7 +15,7 @@ public class UdalostnaSimulacia extends SimJadro{
 
     @Override
     void doRep() {
-        while (!udalostiQueue.isEmpty()) {
+        while (!udalostiQueue.isEmpty() && !stopRequested) {
             Udalost udalost = udalostiQueue.poll();
             if (udalost.getCasUdalosti() < simCas) {
                 //throw zly cas error
@@ -26,6 +26,13 @@ public class UdalostnaSimulacia extends SimJadro{
             udalost.execute();
             if (slowRequested) {
                 refreshGUI();
+            }
+            while (isPaused) {
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
             }
         }
     }

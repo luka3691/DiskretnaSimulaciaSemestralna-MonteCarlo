@@ -24,5 +24,6 @@ public class ZačiatokPlatenia extends Udalost {
         stanok.getPokladne().getPokladne()[osoba.getIdPokladne()] = false;
         osoba.setStav(StavyOsoby.JE_OBSLUHOVANY_V_POKLADNI);
         stanok.naplanujUdalost(new KoniecPlatenia(jadro, stanok.getSimCas() + stanok.getNahodnyJav().getTravniePlatby(), osoba));
+        stanok.setStavyOsob(osoba.toArray());
     }
 }

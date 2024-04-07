@@ -1,17 +1,9 @@
-import MonteCarlo.Rozdelenia.Exponencialne;
-import MonteCarlo.Rozdelenia.SpojiteEmpiricke;
-import MonteCarlo.Rozdelenia.Triangularne;
-import MonteCarlo.Stanok;
-
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
+        GUIPorovnanie porovnaie = new GUIPorovnanie(5, 100000);
+        porovnaie.startSimulation();
         //Stanok stanok = new Stanok(25000, 15, 6);
         //stanok.simuluj();
 

@@ -42,6 +42,7 @@ public class PrevzatieNadrozmernehoTovaru extends Udalost{
 
 
         osoba.setStav(StavyOsoby.ODCHADZA);
+        stanok.setStavyOsob(osoba.toArray());
         //stanok.getPriemerCasVObchode().pridajZaznam(stanok.getSimCas() - osoba.getCasPrichodu());
 
     }

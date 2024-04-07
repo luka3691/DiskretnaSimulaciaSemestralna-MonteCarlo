@@ -10,6 +10,7 @@ public abstract class SimJadro {
     private int numberOfReplications;
     protected volatile boolean stopRequested = false;
     protected volatile boolean slowRequested = true;
+    protected volatile boolean isPaused = false;
     private List<ISimDelegate> delegates;
 
     public SimJadro(int numberOfReplications) {
@@ -19,11 +20,11 @@ public abstract class SimJadro {
 
     public void simuluj() {
         beforeReps();
-        for (int i = 0; i < numberOfReplications && !stopRequested; i++) {
+        for (int i = 0; i <= numberOfReplications && !stopRequested; i++) {
             beforeRep();
             doRep();
             afterRep();
-            if (!slowRequested) {
+            if (!slowRequested && i % 1000 == 0 && i > 1000) {
                 refreshGUI();
             }
         }
@@ -64,7 +65,16 @@ public abstract class SimJadro {
         this.slowRequested = slowRequested;
     }
 
+    public void setPaused(boolean paused) {
+        isPaused = paused;
+    }
+
+    public void setStopRequested(boolean stopRequested) {
+        this.stopRequested = stopRequested;
+    }
+
     public boolean isSlowRequested() {
         return slowRequested;
     }
+
 }

@@ -29,5 +29,6 @@ public class KoniecPlatenia extends Udalost{
             Osoba osobaNova = stanok.getPokladne().getRady()[osoba.getIdPokladne()].poll();
             stanok.naplanujUdalost(new ZačiatokPlatenia(stanok, stanok.getSimCas(), osobaNova, osoba.getIdPokladne()));
         }
+        stanok.setStavyOsob(osoba.toArray());
     }
 }
