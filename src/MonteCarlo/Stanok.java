@@ -25,6 +25,14 @@ public class Stanok extends UdalostnaSimulacia{
     private Statistika priemerCakanieVRadeCelkovy;
     private Statistika priemerCakanieVRade;
     private Statistika priemerPoslednyOdchod;
+    private ArrayList<Statistika> priemerVytazenostPokladni;
+    private ArrayList<Statistika> priemerVytazenostObsluznych;
+    private ArrayList<Statistika> priemerDlzkaRadovPriPokladniach;
+    private Statistika priemerVytazenieAutomatu;
+    private Statistika priemerVytazenieAutomatuCelkove;
+    private ArrayList<Statistika> priemerVytazenostPokladniCelkove;
+    private ArrayList<Statistika> priemerVytazenostObsluznychCelkove;
+    private ArrayList<Statistika> priemerDlzkaRadovPriPokladniachCelkove;
     private Osoba osobaUAutomatu = null;
 
     private boolean automatIsEmpty;
@@ -61,8 +69,18 @@ public class Stanok extends UdalostnaSimulacia{
         priemerCakanieVRadeCelkovy = new Statistika(false);
         priemerCakanieVRadePredAutomatomCalkovy = new Statistika(false);
         priemerPoslednyOdchod = new Statistika(false);
+        priemerVytazenostObsluznychCelkove = new ArrayList<>();
+        priemerVytazenostPokladniCelkove = new ArrayList<>();
+        priemerDlzkaRadovPriPokladniachCelkove = new ArrayList<>();
+        for (int i = 0; i < pocetPokladni; i++) {
+            priemerVytazenostPokladniCelkove.add(new Statistika(false));
+            priemerDlzkaRadovPriPokladniachCelkove.add(new Statistika(false));
+        }
+        for (int i = 0; i < pocetObsluznych; i++) {
+            priemerVytazenostObsluznychCelkove.add(new Statistika(false));
+        }
 
-
+    priemerVytazenieAutomatuCelkove = new Statistika(false);
     }
 
     @Override
@@ -77,6 +95,17 @@ public class Stanok extends UdalostnaSimulacia{
         udalostiQueue.add(new PrichodZakaznika(this, zaciatokCasu + nahodnyJav.getPrichodLudi()));
         poslednyCasOdchodu = 0.0;
         stavyOsob = new ArrayList<>();
+        priemerVytazenostObsluznych = new ArrayList<>();
+        priemerVytazenostPokladni = new ArrayList<>();
+        priemerDlzkaRadovPriPokladniach = new ArrayList<>();
+        for (int i = 0; i < pocetPokladni; i++) {
+            priemerVytazenostPokladni.add(new Statistika(false));
+            priemerDlzkaRadovPriPokladniach.add(new Statistika(false));
+        }
+        for (int i = 0; i < pocetObsluznych; i++) {
+            priemerVytazenostObsluznych.add(new Statistika(false));
+        }
+        priemerVytazenieAutomatu = new Statistika(false);
     }
 
 
@@ -90,6 +119,14 @@ public class Stanok extends UdalostnaSimulacia{
         priemerCasVObchodeCelkovy.pridajZaznam(priemerCasVObchode.vypocitaj());
         priemerCakanieVRadePredAutomatomCalkovy.pridajZaznam(priemerCakanieVRadePredAutomatom.vypocitaj());
         priemerPoslednyOdchod.pridajZaznam(simCas);
+        for (int i = 0; i < pocetPokladni; i++) {
+            priemerVytazenostPokladniCelkove.get(i).pridajZaznam(priemerVytazenostPokladni.get(i).vypocitaj());
+            priemerDlzkaRadovPriPokladniachCelkove.get(i).pridajZaznam(priemerDlzkaRadovPriPokladniach.get(i).vypocitaj());
+        }
+        for (int i = 0; i < pocetObsluznych; i++) {
+            priemerVytazenostObsluznychCelkove.get(i).pridajZaznam(priemerVytazenostObsluznych.get(i).vypocitaj());
+        }
+        priemerVytazenieAutomatuCelkove.pridajZaznam(priemerVytazenieAutomatu.vypocitaj());
 
     }
     @Override

@@ -188,7 +188,7 @@ public class GUIapp implements ISimDelegate {
         }
         if (pomalyBeh) {
             zakazniciModel.addRow(new Object[]{sim.getStavyOsob().get(0), sim.getStavyOsob().get(1), sim.getStavyOsob().get(2)});
-            casLabel.setText((int)sim.getSimCas()/60 + ":" + (int)sim.getSimCas()%60);
+            casLabel.setText((int)sim.getSimCas()/60 + ":" + (int)sim.getSimCas()%60 + ":" + (int)(sim.getSimCas()*60%60));
             pocetLudiPredAutomatom.setText(String.valueOf(sim.getOsobyQueue().size()));
             for (int i = 0; i < pocetPokladni; i++) {
                 pokladneModel.setValueAt(sim.getPokladne().getPokladne()[i], i, 1);
@@ -211,6 +211,8 @@ public class GUIapp implements ISimDelegate {
                 // Handle the InterruptedException if required
                 // For example, log it or rethrow it
             }
+        } else {
+
         }
 
     }
