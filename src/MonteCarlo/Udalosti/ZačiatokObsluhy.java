@@ -30,9 +30,13 @@ public class ZačiatokObsluhy extends Udalost {
         osoba.setStav(StavyOsoby.JE_OBSLUHOVANY);
         this.osoba.setNadrozmernaObjednavka(stanok.getNahodnyJav().getNechaTovarNaObsluznom());
         if (osoba.getTypZakaznika() == TypZakaznika.ONLINE) {
-            stanok.naplanujUdalost(new KoniecObsluhy(stanok, stanok.getSimCas() + stanok.getNahodnyJav().getCasNaPripravenieOnline(), osoba));
+            double trvanieUdalosti = stanok.getNahodnyJav().getCasNaPripravenieOnline();
+            stanok.naplanujUdalost(new KoniecObsluhy(stanok, stanok.getSimCas() +trvanieUdalosti, osoba));
+            stanok.getPriemerVytazenostObsluznychOnline().get(IDPokladne).pridajZaznam(trvanieUdalosti);
         } else {
+            double trvanieUdalosti = stanok.getNahodnyJav().getCasNaNadiktovanieObjednavky() + stanok.getNahodnyJav().getTravnieObjednavky();
             stanok.naplanujUdalost(new KoniecObsluhy(stanok, stanok.getSimCas() + stanok.getNahodnyJav().getCasNaNadiktovanieObjednavky() + stanok.getNahodnyJav().getTravnieObjednavky(), osoba));
+            stanok.getPriemerVytazenostObsluznychOstatne().get(IDPokladne).pridajZaznam(trvanieUdalosti);
         }
         if (!stanok.getOsobyQueue().isEmpty() && stanok.getObsluzneMiesta().zmestiSa(stanok.getAutomatIsEmpty()) && stanok.getAutomatIsEmpty()) {
             Osoba novaOsoba = stanok.getOsobyQueue().poll();

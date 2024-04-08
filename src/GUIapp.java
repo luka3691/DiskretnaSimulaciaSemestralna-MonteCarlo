@@ -48,6 +48,16 @@ public class GUIapp implements ISimDelegate {
     private JPanel prepinaciPanel;
     private JLabel obsadenyAutomatLabel;
     private JCheckBox porovananieCheckbox;
+    private JLabel cisloReplikacieLabel;
+    private JLabel priemerObsluzenychLabel;
+    private JLabel priemerCasVSystemeLabel;
+    private JLabel priemerCasOdchodLabel;
+    private JLabel intervalSpolahlivostiLabel;
+    private JLabel casCakaniaPredAutomatomLabel;
+    private JLabel priemerDlzkaFrontuPredAutomatomLabel;
+    private JLabel vytazeneiAutomatuLabel;
+    private JLabel vytazenieOnlineObsluznychLabel;
+    private JLabel vytazeniePokladniLabel;
     private SimJadro pausedSim;
     int pocetPokladni;
     int pocetObsluz ;

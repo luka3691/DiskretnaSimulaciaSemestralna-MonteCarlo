@@ -21,7 +21,9 @@ public class ZačiatokZadavaniaDoAutomatu extends Udalost {
         stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
         osoba.setStav(StavyOsoby.ZADAVANIE_DO_AUTOMATU);
         stanok.setOsobaUAutomatu(osoba);
-        stanok.naplanujUdalost(new KoniecZdavaniaDoAutomatu(stanok, stanok.getSimCas()+stanok.getNahodnyJav().getCasZadavaniaDoAutomatu(), osoba));
+        double trvanieUdalosti = stanok.getNahodnyJav().getCasZadavaniaDoAutomatu();
+        stanok.naplanujUdalost(new KoniecZdavaniaDoAutomatu(stanok, stanok.getSimCas()+trvanieUdalosti, osoba));
+        stanok.getPriemerVytazenieAutomatu().pridajZaznam(trvanieUdalosti);
         stanok.setStavyOsob(osoba.toArray());
     }
 }
