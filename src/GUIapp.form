@@ -22,7 +22,7 @@
             </constraints>
             <properties>
               <minimumSize width="501" height="200"/>
-              <visible value="true"/>
+              <visible value="false"/>
             </properties>
             <border type="none"/>
             <children>
@@ -210,7 +210,7 @@
               <card name="normalBehCard"/>
             </constraints>
             <properties>
-              <visible value="false"/>
+              <visible value="true"/>
             </properties>
             <border type="none"/>
             <children>
@@ -402,8 +402,9 @@
                     </constraints>
                     <properties>
                       <majorTickSpacing value="5"/>
+                      <maximum value="50"/>
                       <minimum value="0"/>
-                      <minorTickSpacing value="5"/>
+                      <minorTickSpacing value="1"/>
                       <paintLabels value="true"/>
                       <paintTicks value="true"/>
                       <snapToTicks value="true"/>

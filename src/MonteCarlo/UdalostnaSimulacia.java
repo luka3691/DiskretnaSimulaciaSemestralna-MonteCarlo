@@ -21,13 +21,17 @@ public class UdalostnaSimulacia extends SimJadro{
                 //throw zly cas error
                 System.out.println("Zly cas!");
             }
-            if (slowRequested) {
-                refreshGUI();
+            double tempSimCas = simCas;
+            while (simCas < udalost.getCasUdalosti()) {
+                tempSimCas = simCas;
+                if (slowRequested) {
+                    refreshGUI();
+                }
+                simCas += (double) 1/60;
             }
             simCas = udalost.getCasUdalosti();
-
             udalost.execute();
-
+            simCas = tempSimCas;
             while (isPaused) {
                 try {
                     Thread.sleep(50);

@@ -62,7 +62,7 @@ public class Stanok extends UdalostnaSimulacia{
 
         priemerPocetLudiCelkovy = new Statistika(false);
         priemerCasVObchodeCelkovy = new Statistika(false);
-        priemerDlzkaRaduCelkovy = new Statistika(true);
+        priemerDlzkaRaduCelkovy = new Statistika(false);
         priemerCakanieVRadePredAutomatomCalkovy = new Statistika(false);
         priemerPoslednyOdchod = new Statistika(false);
         priemerVytazenostObsluznychOnlineCelkove = new ArrayList<>();
@@ -108,8 +108,9 @@ public class Stanok extends UdalostnaSimulacia{
         simCas = 0.0;
         this.personIndex = 0;
         automatIsEmpty = true;
-        udalostiQueue.add(new PrichodZakaznika(this, zaciatokCasu + nahodnyJav.getPrichodLudi()));
-
+        double prvyPrichod = zaciatokCasu + nahodnyJav.getPrichodLudi();
+        udalostiQueue.add(new PrichodZakaznika(this, prvyPrichod));
+        simCas = prvyPrichod;
     }
 
 

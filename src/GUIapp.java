@@ -152,7 +152,7 @@ public class GUIapp implements ISimDelegate {
     private void startSimulation() {
         isPaused.set(false);
         isStopped.set(false);
-replikacieCounter =1000;
+        replikacieCounter =1000;
         pokladneModel.setRowCount(0);
         odberModel.setRowCount(0);
         zakazniciModel.setRowCount(0);
@@ -199,7 +199,10 @@ replikacieCounter =1000;
             sim.setSlowRequested(pomalyBeh);
         }
         if (pomalyBeh) {
-            zakazniciModel.addRow(new Object[]{sim.getStavyOsob().get(0), sim.getStavyOsob().get(1), sim.getStavyOsob().get(2)});
+            if(!sim.getStavyOsob().isEmpty()) {
+                zakazniciModel.addRow(new Object[]{sim.getStavyOsob().get(0), sim.getStavyOsob().get(1), sim.getStavyOsob().get(2)});
+                sim.getStavyOsob().clear();
+            }
             casLabel.setText((int)sim.getSimCas()/60 + ":" + (int)sim.getSimCas()%60 + ":" + (int)(sim.getSimCas()*60%60));
             pocetLudiPredAutomatom.setText(String.valueOf(sim.getOsobyQueue().size()));
             for (int i = 0; i < pocetPokladni; i++) {
@@ -221,7 +224,7 @@ replikacieCounter =1000;
             pocetOnlineZakaznikovRad.setText(String.valueOf(sim.getObsluzneMiesta().getOnlineQueue().size()));
             pocetOstatnychZakaznikovRad.setText(String.valueOf(sim.getObsluzneMiesta().getOsobyQueue().size()));
             try {
-                Thread.sleep(rychlostSlider.getValue() );
+                Thread.sleep(Math.round(rychlostSlider.getValue()) );
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }

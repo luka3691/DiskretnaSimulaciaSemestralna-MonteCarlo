@@ -6,12 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="25cfbe7a-dbb8-442f-9067-a1df747ef9f5" name="Changes" comment="Added statistiky">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUIPorovnanie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUIPorovnanie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUIapp.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUIapp.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUIapp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUIapp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/SimJadro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/SimJadro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Stanok.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Stanok.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Statistika.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Statistika.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/PrichodZakaznika.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/PrichodZakaznika.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/UdalostnaSimulacia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/UdalostnaSimulacia.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +156,7 @@
       <workItem from="1712252813248" duration="14852000" />
       <workItem from="1712312575212" duration="3673000" />
       <workItem from="1712487718527" duration="4612000" />
-      <workItem from="1712570683602" duration="14701000" />
+      <workItem from="1712570683602" duration="19689000" />
     </task>
     <task id="LOCAL-00001" summary="Funkcny stanok">
       <option name="closed" value="true" />
@@ -286,7 +286,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712577376736</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Added statistiky">
+      <option name="closed" value="true" />
+      <created>1712586129306</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1712586129306</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,11 +344,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/MonteCarlo/SimJadro.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/GUIapp.java</url>
           <line>116</line>
           <option name="timeStamp" value="24" />
@@ -351,19 +354,19 @@
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/GUIapp.java</url>
-          <line>201</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/MonteCarlo/Stanok.java</url>
-          <line>121</line>
-          <option name="timeStamp" value="27" />
+          <line>122</line>
+          <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/MonteCarlo/Udalosti/PrichodZakaznika.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="28" />
+          <url>file://$PROJECT_DIR$/src/MonteCarlo/Statistika.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/MonteCarlo/Statistika.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="45" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

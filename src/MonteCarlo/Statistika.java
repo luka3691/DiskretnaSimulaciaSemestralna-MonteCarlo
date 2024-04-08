@@ -8,6 +8,8 @@ public class Statistika {
     private double maxVaha;
     private double maxVahaSquared;
     private double celkovaSumaVazenychZaznamov;
+    private double poslednyCasZaznamu;
+    private double poslednaDlzkaRadu;
 
     private final boolean isWeighted;
 
@@ -26,22 +28,28 @@ public class Statistika {
     }
 
     public void pridajZaznam(double hodnota, double vaha) {
-        if (maxVaha < vaha) {
-            maxVaha = vaha;
+        double tempVaha = vaha - (9*60);
+        if (maxVaha < tempVaha) {
+            maxVaha = tempVaha;
         }
         pocetZaznamov++;
-        celkovaSumaVazenychZaznamov += hodnota * (vaha - 60*9);
+        if (poslednyCasZaznamu != 0) {
+            celkovaSumaVazenychZaznamov += poslednaDlzkaRadu * (tempVaha - poslednyCasZaznamu);
+        }
+        poslednaDlzkaRadu = hodnota;
+        poslednyCasZaznamu = tempVaha;
     }
     public double vypocitaj() {
         if (isWeighted) {
             if (maxVaha == 0) {
                 return 0.0;
             }
-            return celkovaSumaVazenychZaznamov / maxVaha ;
+            return celkovaSumaVazenychZaznamov / (maxVaha) ;
         } else {
             if (pocetZaznamov == 0) {
                 //throw
                 System.out.println("Nevazeny error");
+                return 0;
             }
             return maxVaha / pocetZaznamov;
         }

@@ -17,7 +17,7 @@ public class PrichodZakaznika extends Udalost {
 
         //stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
         osoba.setStav(StavyOsoby.V_RADE_PRED_AUTOMATOM);
-
+        stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
 
         if (stanok.getAutomatIsEmpty() && stanok.getObsluzneMiesta().zmestiSa(stanok.getAutomatIsEmpty())) {
             stanok.naplanujUdalost(new ZačiatokZadavaniaDoAutomatu(stanok, stanok.getSimCas(), osoba));
