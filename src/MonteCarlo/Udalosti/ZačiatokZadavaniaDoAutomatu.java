@@ -1,7 +1,7 @@
 package MonteCarlo.Udalosti;
 import MonteCarlo.Osoby.Osoba;
 import MonteCarlo.Osoby.StavyOsoby;
-import MonteCarlo.Stanok;
+import MonteCarlo.Predajna;
 import MonteCarlo.UdalostnaSimulacia;
 
 public class ZačiatokZadavaniaDoAutomatu extends Udalost {
@@ -14,16 +14,16 @@ public class ZačiatokZadavaniaDoAutomatu extends Udalost {
 
     @Override
     public void execute() {
-        Stanok stanok = (Stanok)jadro;
-        stanok.setAutomatIsEmpty(false);
+        Predajna predajna = (Predajna)jadro;
+        predajna.setAutomatIsEmpty(false);
         //stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
-        stanok.getPriemerCakanieVRadePredAutomatom().pridajZaznam(stanok.getSimCas() - osoba.getCasPrichodu());
-        stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
+        predajna.getPriemerCakanieVRadePredAutomatom().pridajZaznam(predajna.getSimCas() - osoba.getCasPrichodu());
+        predajna.getPriemerDlzkaRadu().pridajZaznam(predajna.getOsobyQueue().size(), predajna.getSimCas());
         osoba.setStav(StavyOsoby.ZADAVANIE_DO_AUTOMATU);
-        stanok.setOsobaUAutomatu(osoba);
-        double trvanieUdalosti = stanok.getNahodnyJav().getCasZadavaniaDoAutomatu();
-        stanok.naplanujUdalost(new KoniecZdavaniaDoAutomatu(stanok, stanok.getSimCas()+trvanieUdalosti, osoba));
-        stanok.getPriemerVytazenieAutomatu().pridajZaznam(trvanieUdalosti);
-        stanok.setStavyOsob(osoba.toArray());
+        predajna.setOsobaUAutomatu(osoba);
+        double trvanieUdalosti = predajna.getNahodnyJav().getCasZadavaniaDoAutomatu();
+        predajna.naplanujUdalost(new KoniecZdavaniaDoAutomatu(predajna, predajna.getSimCas()+trvanieUdalosti, osoba));
+        predajna.getPriemerVytazenieAutomatu().pridajZaznam(trvanieUdalosti);
+        predajna.setStavyOsob(osoba.toArray());
     }
 }

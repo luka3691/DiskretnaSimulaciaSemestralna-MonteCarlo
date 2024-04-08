@@ -1,6 +1,6 @@
 import MonteCarlo.ISimDelegate;
 import MonteCarlo.SimJadro;
-import MonteCarlo.Stanok;
+import MonteCarlo.Predajna;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -10,7 +10,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 
@@ -59,6 +58,8 @@ public class GUIapp implements ISimDelegate {
     private JLabel vytazenieObsluznychLabel;
     private JLabel vytazeniePokladniLabel;
     private JLabel dlzkyRadovPriPokladniachLabel;
+    private JLabel dlzkyRadovPredObsluznymiLabel;
+    private JLabel priemerObsluzenychLabel;
     private SimJadro pausedSim;
     int pocetPokladni;
     int pocetObsluz ;
@@ -159,17 +160,17 @@ public class GUIapp implements ISimDelegate {
         int pocetReplikacii = Integer.parseInt(pocetReplikField.getText());
         pocetPokladni = Integer.parseInt(pocetPokladField.getText());
         pocetObsluz = Integer.parseInt(pocetObsluzField.getText());
-        Stanok stanok = new Stanok(pocetReplikacii,pocetObsluz, pocetPokladni);
-        Thread simulatcia1 = new Thread(stanok::simuluj);
-        stanok.registerDelegate(this);
+        Predajna predajna = new Predajna(pocetReplikacii,pocetObsluz, pocetPokladni);
+        Thread simulatcia1 = new Thread(predajna::simuluj);
+        predajna.registerDelegate(this);
         for (int i = 0; i < pocetPokladni; i++) {
-            pokladneModel.addRow(new Object[]{i, stanok.getPokladne().getPokladne()[i], 0 ,0.0});
+            pokladneModel.addRow(new Object[]{i, predajna.getPokladne().getPokladne()[i], 0 ,0.0});
         }
-        for (int i = 0; i < stanok.getObsluzneMiesta().getOnlineObsluzne().length; i++) {
-            odberModel.addRow(new Object[]{i, "ONLINE", stanok.getObsluzneMiesta().getOnlineObsluzne()[i], 0.0});
+        for (int i = 0; i < predajna.getObsluzneMiesta().getOnlineObsluzne().length; i++) {
+            odberModel.addRow(new Object[]{i, "ONLINE", predajna.getObsluzneMiesta().getOnlineObsluzne()[i], 0.0});
         }
-        for (int i = 0; i < stanok.getObsluzneMiesta().getNormalneObsluzne().length; i++) {
-            odberModel.addRow(new Object[]{i+stanok.getObsluzneMiesta().getOnlineObsluzne().length, "NORMALNE",stanok.getObsluzneMiesta().getNormalneObsluzne()[i], 0.0});
+        for (int i = 0; i < predajna.getObsluzneMiesta().getNormalneObsluzne().length; i++) {
+            odberModel.addRow(new Object[]{i+ predajna.getObsluzneMiesta().getOnlineObsluzne().length, "NORMALNE", predajna.getObsluzneMiesta().getNormalneObsluzne()[i], 0.0});
         }
 //odstarovanie simulacie pre kazdu strategiu
         if (porovananieCheckbox.isSelected()) {
@@ -186,7 +187,7 @@ public class GUIapp implements ISimDelegate {
 
     @Override
     public void refresh(SimJadro simJadro) {
-        Stanok sim = (Stanok) simJadro;
+        Predajna sim = (Predajna) simJadro;
         if (isStopped.get()) {
             sim.setStopRequested(true);
 
@@ -230,14 +231,16 @@ public class GUIapp implements ISimDelegate {
             }
         } else {
             cisloReplikacieLabel.setText(String.valueOf(sim.getCisloReplikacie()));
-            priemerZakaznikovLabel.setText(String.valueOf(Math.round(sim.getPriemerPocetLudiCelkovy().vypocitaj() * 100.0) / 100.0));
-            priemerCasVSystemeLabel.setText(String.valueOf(Math.round(sim.getPriemerCasVObchodeCelkovy().vypocitaj() * 100.0) / 100.0));
+            priemerZakaznikovLabel.setText(String.valueOf(Math.round(sim.getPriemerPocetLudiCelkovy().vypocitaj() * 1000.0) / 1000.0));
+            double casVSyteme = Math.round(sim.getPriemerCasVObchodeCelkovy().vypocitaj() * 1000.0) / 1000.0;
+            priemerCasVSystemeLabel.setText((int)casVSyteme%60 + ":" + (int)(casVSyteme*60%60));
             double casOdchodu = sim.getPriemerPoslednyOdchod().vypocitaj();
             priemerCasOdchodLabel.setText(String.valueOf((int)casOdchodu/60 + ":" + (int)casOdchodu%60 + ":" + (int)(casOdchodu*60%60)));
-            intervalSpolahlivostiLabel.setText(Arrays.toString(sim.getPriemerCasVObchodeCelkovy().getIntervalSpolahlivosti()));
-            casCakaniaPredAutomatomLabel.setText(String.valueOf(Math.round(sim.getPriemerCakanieVRadePredAutomatomCalkovy().vypocitaj() * 100.0) / 100.0));
-            priemerDlzkaFrontuPredAutomatomLabel.setText(String.valueOf(Math.round(sim.getPriemerDlzkaRaduCelkovy().vypocitaj() * 100.0) / 100.0));
-            vytazeneiAutomatuLabel.setText(Math.round(sim.getPriemerVytazenieAutomatuCelkove().vypocitaj()*100 * 100.0) / 100.0 + "%");
+            intervalSpolahlivostiLabel.setText(String.valueOf((int)Math.floor(sim.getPriemerCasVObchodeCelkovy().getIntervalSpolahlivosti()[0])) + ":" + String.valueOf((int)(sim.getPriemerCasVObchodeCelkovy().getIntervalSpolahlivosti()[0]*60%60)) + ";" + String.valueOf((int)Math.floor(sim.getPriemerCasVObchodeCelkovy().getIntervalSpolahlivosti()[1])) + ":" + String.valueOf((int)(sim.getPriemerCasVObchodeCelkovy().getIntervalSpolahlivosti()[1]*60%60)));
+            double casCakaniaVRade = sim.getPriemerCakanieVRadePredAutomatomCalkovy().vypocitaj();
+            casCakaniaPredAutomatomLabel.setText((int)casCakaniaVRade + ":" + (int)(casCakaniaVRade*60%60));
+            priemerDlzkaFrontuPredAutomatomLabel.setText(String.valueOf(Math.round(sim.getPriemerDlzkaRaduCelkovy().vypocitaj() * 1000.0) / 1000.0));
+            vytazeneiAutomatuLabel.setText(Math.round(sim.getPriemerVytazenieAutomatuCelkove().vypocitaj()*100* 1000.0) / 1000.0 + "%");
             ArrayList<String> vytazenieObsluznych = new ArrayList<>();
 
             for (int i = 0; i < sim.getObsluzneMiesta().getOnlineObsluzne().length; i++) {
@@ -252,11 +255,12 @@ public class GUIapp implements ISimDelegate {
             ArrayList<String> dlzkyRadovPriPokladniach = new ArrayList<>();
             for (int i = 0; i < pocetPokladni; i++) {
                 vytazeniePokladni.add(Math.round(sim.getPriemerVytazenostPokladniCelkove().get(i).vypocitaj()*100) + "%");
-                dlzkyRadovPriPokladniach.add(String.valueOf(Math.round(sim.getPriemerDlzkaRadovPriPokladniachCelkove().get(i).vypocitaj())));
+                dlzkyRadovPriPokladniach.add(String.valueOf(Math.round(sim.getPriemerDlzkaRadovPriPokladniachCelkove().get(i).vypocitaj()*1000.0)/1000.0));
             }
             vytazeniePokladniLabel.setText(vytazeniePokladni.toString());
             dlzkyRadovPriPokladniachLabel.setText(dlzkyRadovPriPokladniach.toString());
-
+            priemerObsluzenychLabel.setText(String.valueOf(Math.round(sim.getPocetObsluzenychZakaznikovCelkove().vypocitaj()*1000.0)/1000.0));
+            dlzkyRadovPredObsluznymiLabel.setText("Normálne: " + Math.round(sim.getPriemerDlzkaRaduPredObsluzNormalCelkove().vypocitaj()*1000.0)/1000.0 + ", Online: " + Math.round(sim.getPriemerDlzkaRaduPredObsluzOnlineCelkove().vypocitaj()*1000.0)/1000.0);
         }
 
     }

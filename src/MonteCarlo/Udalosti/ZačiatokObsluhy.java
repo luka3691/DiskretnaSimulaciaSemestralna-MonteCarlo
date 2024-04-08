@@ -2,7 +2,7 @@ package MonteCarlo.Udalosti;
 import MonteCarlo.Osoby.Osoba;
 import MonteCarlo.Osoby.StavyOsoby;
 import MonteCarlo.Osoby.TypZakaznika;
-import MonteCarlo.Stanok;
+import MonteCarlo.Predajna;
 import MonteCarlo.UdalostnaSimulacia;
 
 public class ZačiatokObsluhy extends Udalost {
@@ -20,30 +20,33 @@ public class ZačiatokObsluhy extends Udalost {
     @Override
     public void execute() {
 
-        Stanok stanok = (Stanok)jadro;
+        Predajna predajna = (Predajna)jadro;
         if (osoba.getTypZakaznika() == TypZakaznika.ONLINE) {
-            stanok.getObsluzneMiesta().getOnlineObsluzne()[IDPokladne] = false;
+            predajna.getObsluzneMiesta().getOnlineObsluzne()[IDPokladne] = false;
         } else {
-            stanok.getObsluzneMiesta().getNormalneObsluzne()[IDPokladne] = false;
+            predajna.getObsluzneMiesta().getNormalneObsluzne()[IDPokladne] = false;
         }
         osoba.setIdObsluzneho(IDPokladne);
         osoba.setStav(StavyOsoby.JE_OBSLUHOVANY);
-        this.osoba.setNadrozmernaObjednavka(stanok.getNahodnyJav().getNechaTovarNaObsluznom());
+        this.osoba.setNadrozmernaObjednavka(predajna.getNahodnyJav().getNechaTovarNaObsluznom());
         if (osoba.getTypZakaznika() == TypZakaznika.ONLINE) {
-            double trvanieUdalosti = stanok.getNahodnyJav().getCasNaPripravenieOnline();
-            stanok.naplanujUdalost(new KoniecObsluhy(stanok, stanok.getSimCas() +trvanieUdalosti, osoba));
-            stanok.getPriemerVytazenostObsluznychOnline().get(IDPokladne).pridajZaznam(trvanieUdalosti);
+            double trvanieUdalosti = predajna.getNahodnyJav().getCasNaPripravenieOnline();
+            predajna.naplanujUdalost(new KoniecObsluhy(predajna, predajna.getSimCas() +trvanieUdalosti, osoba));
+            predajna.getPriemerVytazenostObsluznychOnline().get(IDPokladne).pridajZaznam(trvanieUdalosti);
         } else {
-            double trvanieUdalosti = stanok.getNahodnyJav().getCasNaNadiktovanieObjednavky() + stanok.getNahodnyJav().getTravnieObjednavky();
-            stanok.naplanujUdalost(new KoniecObsluhy(stanok, stanok.getSimCas() + stanok.getNahodnyJav().getCasNaNadiktovanieObjednavky() + stanok.getNahodnyJav().getTravnieObjednavky(), osoba));
-            stanok.getPriemerVytazenostObsluznychOstatne().get(IDPokladne).pridajZaznam(trvanieUdalosti);
+            double trvanieUdalosti = predajna.getNahodnyJav().getCasNaNadiktovanieObjednavky() + predajna.getNahodnyJav().getTravnieObjednavky();
+            predajna.naplanujUdalost(new KoniecObsluhy(predajna, predajna.getSimCas() + trvanieUdalosti, osoba));
+            predajna.getPriemerVytazenostObsluznychOstatne().get(IDPokladne).pridajZaznam(trvanieUdalosti);
         }
-        if (!stanok.getOsobyQueue().isEmpty() && stanok.getObsluzneMiesta().zmestiSa(stanok.getAutomatIsEmpty()) && stanok.getAutomatIsEmpty()) {
-            Osoba novaOsoba = stanok.getOsobyQueue().poll();
-            //tu treba zaznamenat dlzku radu (pretoze sa meni velkost radu)
-            //stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
-            stanok.naplanujUdalost(new ZačiatokZadavaniaDoAutomatu(stanok, stanok.getSimCas(), novaOsoba));
+        if (!predajna.getOsobyQueue().isEmpty() && predajna.getObsluzneMiesta().zmestiSa(predajna.getAutomatIsEmpty()) && predajna.getAutomatIsEmpty()) {
+            Osoba novaOsoba = predajna.getOsobyQueue().poll();
+            if (osoba.getTypZakaznika() == TypZakaznika.ONLINE) {
+                predajna.getPriemerDlzkaRaduPredObsluzOnline().pridajZaznam(predajna.getObsluzneMiesta().getOnlineQueue().size(), predajna.getSimCas());
+            } else {
+                predajna.getPriemerDlzkaRaduPredObsluzNormal().pridajZaznam(predajna.getObsluzneMiesta().getOsobyQueue().size(), predajna.getSimCas());
+            }
+            predajna.naplanujUdalost(new ZačiatokZadavaniaDoAutomatu(predajna, predajna.getSimCas(), novaOsoba));
         }
-        stanok.setStavyOsob(osoba.toArray());
+        predajna.setStavyOsob(osoba.toArray());
     }
 }

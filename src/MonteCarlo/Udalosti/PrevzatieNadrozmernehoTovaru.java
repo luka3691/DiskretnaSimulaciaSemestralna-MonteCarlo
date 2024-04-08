@@ -2,7 +2,7 @@ package MonteCarlo.Udalosti;
 import MonteCarlo.Osoby.Osoba;
 import MonteCarlo.Osoby.StavyOsoby;
 import MonteCarlo.Osoby.TypZakaznika;
-import MonteCarlo.Stanok;
+import MonteCarlo.Predajna;
 import MonteCarlo.UdalostnaSimulacia;
 
 import java.util.Queue;
@@ -17,32 +17,34 @@ public class PrevzatieNadrozmernehoTovaru extends Udalost{
 
     @Override
     public void execute() {
-        Stanok stanok = (Stanok)jadro;
+        Predajna predajna = (Predajna)jadro;
         //tu treba zaznamenat cas v obchode do statistiky
         Queue<Osoba> queue;
         if (osoba.getTypZakaznika() == TypZakaznika.ONLINE) {
-            stanok.getObsluzneMiesta().getOnlineObsluzne()[osoba.getIdObsluzneho()] = true;
-            queue = stanok.getObsluzneMiesta().getOnlineQueue();
+            predajna.getObsluzneMiesta().getOnlineObsluzne()[osoba.getIdObsluzneho()] = true;
+            queue = predajna.getObsluzneMiesta().getOnlineQueue();
         } else {
-            stanok.getObsluzneMiesta().getNormalneObsluzne()[osoba.getIdObsluzneho()] = true;
-            queue = stanok.getObsluzneMiesta().getOsobyQueue();
+            predajna.getObsluzneMiesta().getNormalneObsluzne()[osoba.getIdObsluzneho()] = true;
+            queue = predajna.getObsluzneMiesta().getOsobyQueue();
         }
 
-        stanok.getPriemerCasVObchode().pridajZaznam(stanok.getSimCas() - osoba.getCasPrichodu());
+        predajna.getPriemerCasVObchode().pridajZaznam(predajna.getSimCas() - osoba.getCasPrichodu());
 
         if (!queue.isEmpty()) {
             Osoba novaOsoba = queue.poll();
             //tu treba zaznamenat dlzku radu (pretoze sa meni velkost radu)
             //stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
-            int id = stanok.getObsluzneMiesta().getIDVolnaPokladna(novaOsoba);
+            int id = predajna.getObsluzneMiesta().getIDVolnaPokladna(novaOsoba);
             if (id != -1) {
-                stanok.naplanujUdalost(new ZačiatokObsluhy(stanok, stanok.getSimCas(), novaOsoba, id));
+                predajna.naplanujUdalost(new ZačiatokObsluhy(predajna, predajna.getSimCas(), novaOsoba, id));
             }
         }
 
 
         osoba.setStav(StavyOsoby.ODCHADZA);
-        stanok.setStavyOsob(osoba.toArray());
+        predajna.setStavyOsob(osoba.toArray());
+        int pocetObsluzenych = predajna.getPocetObsluzenychZakaznikov() + 1;
+        predajna.setPocetObsluzenychZakaznikov(pocetObsluzenych);
         //stanok.getPriemerCasVObchode().pridajZaznam(stanok.getSimCas() - osoba.getCasPrichodu());
 
     }

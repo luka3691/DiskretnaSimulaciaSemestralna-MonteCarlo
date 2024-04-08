@@ -9,27 +9,19 @@ import java.util.Random;
 public class NahodneJavy {
 
     private Exponencialne prichodLudi;
-    //private Statistika priemerPocetLudi;
     private SpojiteRovnomerne typZakaznikaGenerator;
-
     private SpojiteRovnomerne casZadavaniaDoAutomatu;
     private SpojiteRovnomerne casNaNadiktovanieObjednavky;
     private Triangularne casNaOdovzadnieOnlineTovaru;
-
     private SpojiteRovnomerne nechaTovarNaObsluznom;
     private SpojiteRovnomerne spatnePrevzatieVelkehoTovaru;
-
     private SpojiteEmpiricke casPripravaJednoduchej;
     private SpojiteRovnomerne casPripravaMierneZlozitej;
     private SpojiteEmpiricke casPripravaZlozitej;
-
     private SpojiteRovnomerne generovanieZlozitosti;
-
     private SpojiteRovnomerne generovanieTypuPlatby;
-
     private DiskretneRovnomerne trvaniePlatbyHotovost;
     private DiskretneRovnomerne trvaniePlatbyKrata;
-
     private SpojiteRovnomerne nahodnePostavanieDoRadu;
     private SpojiteRovnomerne nahodnePostavenieDoPokladne;
 

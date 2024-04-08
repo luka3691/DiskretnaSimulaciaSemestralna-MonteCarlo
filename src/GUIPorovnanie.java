@@ -1,10 +1,9 @@
 import MonteCarlo.ISimDelegate;
 import MonteCarlo.SimJadro;
-import MonteCarlo.Stanok;
+import MonteCarlo.Predajna;
 import org.knowm.xchart.XChartPanel;
 import org.knowm.xchart.XYChart;
 import org.knowm.xchart.XYChartBuilder;
-import org.knowm.xchart.XYSeries;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,20 +18,29 @@ public class GUIPorovnanie implements ISimDelegate {
     private final int maxPokladni = 6;
     private XYChart chart;
 
+    private ArrayList<JLabel> valueLabels;
 private ArrayList<List<Integer>> xValues;
 private ArrayList<List<Double>> yValues;
     private XChartPanel<XYChart> chartPanel;
     public GUIPorovnanie(int pocetObsluznych, int pocetReplikacii) {
         this.pocetObsluznych = pocetObsluznych;
         this.pocetReplikacii = pocetReplikacii;
+        valueLabels = new ArrayList<>();
         JFrame frame = new JFrame("Porovnanie");
         frame.setLayout(new BorderLayout());
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         chart = new XYChartBuilder().width(800).height(600).title("Porovnanie závislosti počtu pokladní na dĺžku radu pred automatom.").xAxisTitle("Replikácia").yAxisTitle("Čakanie v rade").build();
         JPanel panel = new JPanel();
         chartPanel = new XChartPanel<>(chart);
-        frame.add(chartPanel, BorderLayout.CENTER);
-        frame.setSize(800, 600);
+        frame.add(chartPanel, BorderLayout.NORTH);
+        JPanel hodontyPanel = new JPanel(new GridLayout(1, 5));
+        for (int i = 0; i < 5; i++) {
+            JLabel labelValue = new JLabel();
+            hodontyPanel.add(labelValue);
+            valueLabels.add(labelValue);
+        }
+        frame.add(hodontyPanel, BorderLayout.SOUTH);
+        frame.setSize(800, 700);
         frame.setVisible(true);
         //chart.getStyler().setXAxisTickMarkSpacingHint(1000);
         chartPanel.revalidate();
@@ -46,10 +54,10 @@ private ArrayList<List<Double>> yValues;
         yValues = new ArrayList<>();
 
         for (int i = minPokladni; i <= maxPokladni; i++) {
-            Stanok stanok = new Stanok(pocetReplikacii, pocetObsluznych, i);
-            stanok.setSlowRequested(false);
-            stanok.registerDelegate(this);
-            Thread thread = new Thread(stanok::simuluj);
+            Predajna predajna = new Predajna(pocetReplikacii, pocetObsluznych, i);
+            predajna.setSlowRequested(false);
+            predajna.registerDelegate(this);
+            Thread thread = new Thread(predajna::simuluj);
             threads.add(thread);
             replicationCounter.add(0);
             List<Integer> x = new ArrayList<>();
@@ -72,7 +80,7 @@ private ArrayList<List<Double>> yValues;
     @Override
     public synchronized void refresh(SimJadro simJadro) {
         SwingUtilities.invokeLater(() -> {
-            Stanok sim = (Stanok) simJadro;
+            Predajna sim = (Predajna) simJadro;
             int tempPocetPokladni = sim.getPocetPokladni();
             int i = tempPocetPokladni - minPokladni;
             if (replicationCounter.get(i) == 0) {
@@ -83,6 +91,7 @@ private ArrayList<List<Double>> yValues;
             replicationCounter.set(i, replicationCounter.get(i) +1000);
             yValues.get(i).add(sim.getPriemerDlzkaRaduCelkovy().vypocitaj());
             chart.updateXYSeries(String.valueOf(tempPocetPokladni), xValues.get(i), yValues.get(i), null);
+            valueLabels.get(i).setText(tempPocetPokladni + " pokladna: " + String.valueOf(Math.round(sim.getPriemerDlzkaRaduCelkovy().vypocitaj()*1000.0)/1000.0));
             chartPanel.revalidate();
             chartPanel.repaint();
         });

@@ -2,7 +2,7 @@ package MonteCarlo.Rozdelenia;
 
 import java.util.Random;
 
-public class Exponencialne {
+public class Exponencialne implements IRozdelenie{
     private Random random;
     private double lambda;
     private int seed = 1;

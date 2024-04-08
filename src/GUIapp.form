@@ -15,14 +15,14 @@
         <properties/>
         <border type="none"/>
         <children>
-          <grid id="ed86c" binding="zrychlenyBeh" layout-manager="GridLayoutManager" row-count="11" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="ed86c" binding="zrychlenyBeh" layout-manager="GridLayoutManager" row-count="13" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <card name="zrychlenyBehCard"/>
             </constraints>
             <properties>
               <minimumSize width="501" height="200"/>
-              <visible value="false"/>
+              <visible value="true"/>
             </properties>
             <border type="none"/>
             <children>
@@ -31,7 +31,7 @@
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Priemerný počet obslúžených zákazníkov:"/>
+                  <text value="Priemerný počet zákazníkov:"/>
                 </properties>
               </component>
               <component id="fb63a" class="javax.swing.JLabel">
@@ -39,7 +39,7 @@
                   <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Priemrný čas v systéme:"/>
+                  <text value="Priemerný čas v systéme:"/>
                 </properties>
               </component>
               <component id="e7fab" class="javax.swing.JLabel" binding="casCakaniaPredAutomatomLabel">
@@ -47,7 +47,7 @@
                   <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Label"/>
+                  <text value="Waiting..."/>
                 </properties>
               </component>
               <component id="d5cd6" class="javax.swing.JLabel" binding="priemerDlzkaFrontuPredAutomatomLabel">
@@ -55,7 +55,7 @@
                   <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Label"/>
+                  <text value="Waiting..."/>
                 </properties>
               </component>
               <component id="dede0" class="javax.swing.JLabel">
@@ -87,7 +87,7 @@
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Label"/>
+                  <text value="Waiting..."/>
                 </properties>
               </component>
               <component id="cc8da" class="javax.swing.JLabel" binding="priemerZakaznikovLabel">
@@ -95,7 +95,7 @@
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Label"/>
+                  <text value="Waiting..."/>
                 </properties>
               </component>
               <component id="eb81d" class="javax.swing.JLabel" binding="priemerCasVSystemeLabel">
@@ -103,7 +103,7 @@
                   <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Label"/>
+                  <text value="Waiting..."/>
                 </properties>
               </component>
               <component id="5c68a" class="javax.swing.JLabel">
@@ -127,7 +127,7 @@
                   <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Label"/>
+                  <text value="Waiting..."/>
                 </properties>
               </component>
               <component id="c3012" class="javax.swing.JLabel" binding="intervalSpolahlivostiLabel">
@@ -135,7 +135,7 @@
                   <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Label"/>
+                  <text value="Waiting..."/>
                 </properties>
               </component>
               <component id="d7a1a" class="javax.swing.JLabel">
@@ -159,7 +159,7 @@
                   <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Label"/>
+                  <text value="Waiting..."/>
                 </properties>
               </component>
               <component id="25715" class="javax.swing.JLabel" binding="vytazenieObsluznychLabel">
@@ -167,7 +167,7 @@
                   <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Label"/>
+                  <text value="Waiting..."/>
                 </properties>
               </component>
               <component id="ed70c" class="javax.swing.JLabel">
@@ -183,7 +183,7 @@
                   <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Dĺžka frontov pri pokladniach:"/>
+                  <text value="Priemerné dĺžky radov pri pokladniach:"/>
                 </properties>
               </component>
               <component id="4df80" class="javax.swing.JLabel" binding="vytazeniePokladniLabel">
@@ -191,7 +191,7 @@
                   <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Label"/>
+                  <text value="Waiting..."/>
                 </properties>
               </component>
               <component id="9308d" class="javax.swing.JLabel" binding="dlzkyRadovPriPokladniachLabel">
@@ -199,7 +199,39 @@
                   <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="dlzkaFrontov PriPokladniachLabel"/>
+                  <text value="Waiting..."/>
+                </properties>
+              </component>
+              <component id="a3176" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Priemerný počet obslúžených zákazníkov:"/>
+                </properties>
+              </component>
+              <component id="c0a4a" class="javax.swing.JLabel" binding="priemerObsluzenychLabel">
+                <constraints>
+                  <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Waiting..."/>
+                </properties>
+              </component>
+              <component id="74c48" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="11" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Priemerné dĺžky radov pred obslúžnymi:"/>
+                </properties>
+              </component>
+              <component id="ae154" class="javax.swing.JLabel" binding="dlzkyRadovPredObsluznymiLabel">
+                <constraints>
+                  <grid row="12" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Waiting..."/>
                 </properties>
               </component>
             </children>
@@ -210,7 +242,7 @@
               <card name="normalBehCard"/>
             </constraints>
             <properties>
-              <visible value="true"/>
+              <visible value="false"/>
             </properties>
             <border type="none"/>
             <children>

@@ -2,7 +2,7 @@ package MonteCarlo.Rozdelenia;
 
 import java.util.Random;
 
-public class Triangularne {
+public class Triangularne implements IRozdelenie{
     double min;
     double max;
     double stred;

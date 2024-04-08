@@ -1,7 +1,8 @@
 package MonteCarlo.Udalosti;
 import MonteCarlo.Osoby.Osoba;
 import MonteCarlo.Osoby.StavyOsoby;
-import MonteCarlo.Stanok;
+import MonteCarlo.Osoby.TypZakaznika;
+import MonteCarlo.Predajna;
 import MonteCarlo.UdalostnaSimulacia;
 
 public class KoniecZdavaniaDoAutomatu extends Udalost{
@@ -14,7 +15,7 @@ public class KoniecZdavaniaDoAutomatu extends Udalost{
 
     @Override
     public void execute() {
-        Stanok stanok = (Stanok)jadro;
+        Predajna predajna = (Predajna)jadro;
 
         //tu treba zaznamenat cas v obchode do statistiky
         //osoba.setStav(StavyOsoby.ODCHADZA);
@@ -26,26 +27,31 @@ public class KoniecZdavaniaDoAutomatu extends Udalost{
         //tu treba zaznamenat dlzku radu (pretoze sa meni velkost radu)
         //stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
         osoba.setStav(StavyOsoby.KONIEC_ZADAVANIA_DO_AUTOMATU);
-        int id = stanok.getObsluzneMiesta().getIDVolnaPokladna(osoba);
+        int id = predajna.getObsluzneMiesta().getIDVolnaPokladna(osoba);
         if (id != -1) {
-            stanok.naplanujUdalost(new ZačiatokObsluhy(stanok, stanok.getSimCas(), osoba, id));
-            stanok.setAutomatIsEmpty(true);
+            predajna.naplanujUdalost(new ZačiatokObsluhy(predajna, predajna.getSimCas(), osoba, id));
+            predajna.setAutomatIsEmpty(true);
         } else {
-            stanok.getObsluzneMiesta().zaradDoRadu(osoba);
-            if (stanok.getObsluzneMiesta().zmestiSa(stanok.getAutomatIsEmpty())) {
-                stanok.setAutomatIsEmpty(true);
+            predajna.getObsluzneMiesta().zaradDoRadu(osoba);
+            if (osoba.getTypZakaznika() == TypZakaznika.ONLINE) {
+                predajna.getPriemerDlzkaRaduPredObsluzOnline().pridajZaznam(predajna.getObsluzneMiesta().getOnlineQueue().size(), predajna.getSimCas());
+            } else {
+                predajna.getPriemerDlzkaRaduPredObsluzNormal().pridajZaznam(predajna.getObsluzneMiesta().getOsobyQueue().size(), predajna.getSimCas());
+            }
+            if (predajna.getObsluzneMiesta().zmestiSa(predajna.getAutomatIsEmpty())) {
+                predajna.setAutomatIsEmpty(true);
             }
             osoba.setStav(StavyOsoby.V_RADE_PRED_OSBLUHOU);
         };
         //
-        stanok.setOsobaUAutomatu(null);
-        if (!stanok.getOsobyQueue().isEmpty() && stanok.getObsluzneMiesta().zmestiSa(stanok.getAutomatIsEmpty())) {
-            Osoba novaOsoba = stanok.getOsobyQueue().poll();
+        predajna.setOsobaUAutomatu(null);
+        if (!predajna.getOsobyQueue().isEmpty() && predajna.getObsluzneMiesta().zmestiSa(predajna.getAutomatIsEmpty())) {
+            Osoba novaOsoba = predajna.getOsobyQueue().poll();
             //tu treba zaznamenat dlzku radu (pretoze sa meni velkost radu)
             //stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
-            stanok.naplanujUdalost(new ZačiatokZadavaniaDoAutomatu(stanok, stanok.getSimCas(), novaOsoba));
-            stanok.setAutomatIsEmpty(false);
+            predajna.naplanujUdalost(new ZačiatokZadavaniaDoAutomatu(predajna, predajna.getSimCas(), novaOsoba));
+            predajna.setAutomatIsEmpty(false);
         }
-        stanok.setStavyOsob(osoba.toArray());
+        predajna.setStavyOsob(osoba.toArray());
     }
 }

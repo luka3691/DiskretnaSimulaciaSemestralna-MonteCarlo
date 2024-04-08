@@ -1,8 +1,7 @@
 package MonteCarlo.Udalosti;
 import MonteCarlo.Osoby.Osoba;
 import MonteCarlo.Osoby.StavyOsoby;
-import MonteCarlo.Osoby.TypZakaznika;
-import MonteCarlo.Stanok;
+import MonteCarlo.Predajna;
 import MonteCarlo.UdalostnaSimulacia;
 
 public class ZačiatokPlatenia extends Udalost {
@@ -20,12 +19,12 @@ public class ZačiatokPlatenia extends Udalost {
     @Override
     public void execute() {
 
-        Stanok stanok = (Stanok)jadro;
-        stanok.getPokladne().getPokladne()[osoba.getIdPokladne()] = false;
+        Predajna predajna = (Predajna)jadro;
+        predajna.getPokladne().getPokladne()[osoba.getIdPokladne()] = false;
         osoba.setStav(StavyOsoby.JE_OBSLUHOVANY_V_POKLADNI);
-        double trvanieUdalosti = stanok.getNahodnyJav().getTravniePlatby();
-        stanok.naplanujUdalost(new KoniecPlatenia(jadro, stanok.getSimCas() + trvanieUdalosti, osoba));
-        stanok.getPriemerVytazenostPokladni().get(osoba.getIdPokladne()).pridajZaznam(trvanieUdalosti);
-        stanok.setStavyOsob(osoba.toArray());
+        double trvanieUdalosti = predajna.getNahodnyJav().getTravniePlatby();
+        predajna.naplanujUdalost(new KoniecPlatenia(jadro, predajna.getSimCas() + trvanieUdalosti, osoba));
+        predajna.getPriemerVytazenostPokladni().get(osoba.getIdPokladne()).pridajZaznam(trvanieUdalosti);
+        predajna.setStavyOsob(osoba.toArray());
     }
 }

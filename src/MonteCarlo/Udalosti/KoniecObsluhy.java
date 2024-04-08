@@ -2,7 +2,7 @@ package MonteCarlo.Udalosti;
 import MonteCarlo.Osoby.Osoba;
 import MonteCarlo.Osoby.StavyOsoby;
 import MonteCarlo.Osoby.TypZakaznika;
-import MonteCarlo.Stanok;
+import MonteCarlo.Predajna;
 import MonteCarlo.UdalostnaSimulacia;
 
 import java.util.Queue;
@@ -17,45 +17,47 @@ public class KoniecObsluhy extends Udalost{
 
     @Override
     public void execute() {
-        Stanok stanok = (Stanok)jadro;
+        Predajna predajna = (Predajna)jadro;
         //tu treba zaznamenat cas v obchode do statistiky
         osoba.setStav(StavyOsoby.V_RADE_PRED_POKLADNOU);
         //stanok.getPriemerCasVObchode().pridajZaznam(stanok.getSimCas() - osoba.getCasPrichodu());
-        int idPokladneNaZaradenie = stanok.getPokladne().getIDPokladne(stanok.getNahodnyJav().getNahodnePostavenieDoPokladne());
+        int idPokladneNaZaradenie = predajna.getPokladne().getIDPokladne(predajna.getNahodnyJav().getNahodnePostavenieDoPokladne());
         boolean[] obsluzneDanehoTypu;
         if (osoba.getTypZakaznika() == TypZakaznika.ONLINE) {
-            obsluzneDanehoTypu = stanok.getObsluzneMiesta().getOnlineObsluzne();
+            obsluzneDanehoTypu = predajna.getObsluzneMiesta().getOnlineObsluzne();
         } else {
-            obsluzneDanehoTypu = stanok.getObsluzneMiesta().getNormalneObsluzne();
+            obsluzneDanehoTypu = predajna.getObsluzneMiesta().getNormalneObsluzne();
         }
         obsluzneDanehoTypu[osoba.getIdObsluzneho()] = !osoba.isNechalTovarNaVydajni();
         if (idPokladneNaZaradenie != -1) {
             //pokladna je volna
             //stanok.getPokladne().getPokladne()[idPokladneNaZaradenie] = false;
-            stanok.naplanujUdalost(new ZačiatokPlatenia(stanok, stanok.getSimCas(), osoba, idPokladneNaZaradenie));
+            predajna.naplanujUdalost(new ZačiatokPlatenia(predajna, predajna.getSimCas(), osoba, idPokladneNaZaradenie));
         } else {
             //zaradenie do najkratsieho radu
-            int idRaduNaZaradenie = stanok.getPokladne().getIDNajmensiehoRadu(stanok.getNahodnyJav().getNahodnePostavanieDoRadu());
-            stanok.getPokladne().getRady()[idRaduNaZaradenie].add(osoba);
+            int idRaduNaZaradenie = predajna.getPokladne().getIDNajmensiehoRadu(predajna.getNahodnyJav().getNahodnePostavanieDoRadu());
+            //stanok.getPriemerDlzkaRadovPriPokladniach().get(idRaduNaZaradenie).pridajZaznam(stanok.getPokladne().getRady()[idRaduNaZaradenie].size(), stanok.getSimCas());
+            predajna.getPokladne().getRady()[idRaduNaZaradenie].add(osoba);
+            predajna.getPriemerDlzkaRadovPriPokladniach().get(idRaduNaZaradenie).pridajZaznam(predajna.getPokladne().getRady()[idRaduNaZaradenie].size(), predajna.getSimCas());
             osoba.setIdPokladne(idRaduNaZaradenie);
         }
         Queue<Osoba> queue;
         if (osoba.getTypZakaznika() == TypZakaznika.ONLINE) {
-            queue = stanok.getObsluzneMiesta().getOnlineQueue();
+            queue = predajna.getObsluzneMiesta().getOnlineQueue();
         } else {
-            queue = stanok.getObsluzneMiesta().getOsobyQueue();
+            queue = predajna.getObsluzneMiesta().getOsobyQueue();
         }
         if (obsluzneDanehoTypu[osoba.getIdObsluzneho()] && !queue.isEmpty()) {
             Osoba novaOsoba = queue.poll();
             //tu treba zaznamenat dlzku radu (pretoze sa meni velkost radu)
             //stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
-            int id = stanok.getObsluzneMiesta().getIDVolnaPokladna(novaOsoba);
+            int id = predajna.getObsluzneMiesta().getIDVolnaPokladna(novaOsoba);
             if (id != -1) {
-                stanok.naplanujUdalost(new ZačiatokObsluhy(stanok, stanok.getSimCas(), novaOsoba, id));
+                predajna.naplanujUdalost(new ZačiatokObsluhy(predajna, predajna.getSimCas(), novaOsoba, id));
             }
 
         }
-        stanok.setStavyOsob(osoba.toArray());
+        predajna.setStavyOsob(osoba.toArray());
         //stanok.setAutomatIsEmpty(true);
     }
 }
