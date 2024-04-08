@@ -37,7 +37,7 @@ public class Statistika {
             if (maxVaha == 0) {
                 return 0.0;
             }
-            return celkovaSumaVazenychZaznamov / (maxVaha - 60*9 ) ;
+            return celkovaSumaVazenychZaznamov / maxVaha ;
         } else {
             if (pocetZaznamov == 0) {
                 //throw

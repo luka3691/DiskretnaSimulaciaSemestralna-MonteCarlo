@@ -9,7 +9,6 @@ import java.util.*;
 public class Stanok extends UdalostnaSimulacia{
     private PriorityQueue<Osoba> osobyQueue;
     private int personIndex;
-    private double cas; // v sekundach
     private ObsluzneMiesta obsluzneMiesta;
 
     private Statistika priemerCasVObchode;
@@ -19,8 +18,8 @@ public class Stanok extends UdalostnaSimulacia{
     private Statistika priemerDlzkaRaduCelkovy;
     private Statistika priemerCakanieVRadePredAutomatomCalkovy;
     private Statistika priemerCakanieVRadePredAutomatom;
-    private Statistika priemerCakanieVRadeCelkovy;
-    private Statistika priemerCakanieVRade;
+
+
     private Statistika priemerPoslednyOdchod;
     private ArrayList<Statistika> priemerVytazenostPokladni;
     private ArrayList<Statistika> priemerVytazenostObsluznychOnline;
@@ -38,7 +37,6 @@ public class Stanok extends UdalostnaSimulacia{
 
     private double zaciatokCasu;
     private double koniecCasu;
-    private double poslednyCasOdchodu;
     private NahodneJavy nahodnyJav;
     private Pokladne pokladne;
     private int pocetObsluznych;
@@ -64,8 +62,7 @@ public class Stanok extends UdalostnaSimulacia{
 
         priemerPocetLudiCelkovy = new Statistika(false);
         priemerCasVObchodeCelkovy = new Statistika(false);
-        priemerDlzkaRaduCelkovy = new Statistika(false);
-        priemerCakanieVRadeCelkovy = new Statistika(false);
+        priemerDlzkaRaduCelkovy = new Statistika(true);
         priemerCakanieVRadePredAutomatomCalkovy = new Statistika(false);
         priemerPoslednyOdchod = new Statistika(false);
         priemerVytazenostObsluznychOnlineCelkove = new ArrayList<>();
@@ -75,7 +72,7 @@ public class Stanok extends UdalostnaSimulacia{
 
         for (int i = 0; i < pocetPokladni; i++) {
             priemerVytazenostPokladniCelkove.add(new Statistika(false));
-            priemerDlzkaRadovPriPokladniachCelkove.add(new Statistika(false));
+            priemerDlzkaRadovPriPokladniachCelkove.add(new Statistika(true));
         }
         for (int i = 0; i < obsluzneMiesta.getOnlineObsluzne().length; i++) {
             priemerVytazenostObsluznychOnlineCelkove.add(new Statistika(false));
@@ -89,15 +86,10 @@ public class Stanok extends UdalostnaSimulacia{
 
     @Override
     void beforeRep() {
-        simCas = 0.0;
-        this.personIndex = 0;
         priemerCasVObchode = new Statistika(false);
         priemerDlzkaRadu = new Statistika(true);
-        priemerCakanieVRade = new Statistika(false);
         priemerCakanieVRadePredAutomatom = new Statistika(false);
-        automatIsEmpty = true;
-        udalostiQueue.add(new PrichodZakaznika(this, zaciatokCasu + nahodnyJav.getPrichodLudi()));
-        poslednyCasOdchodu = 0.0;
+        priemerVytazenieAutomatu = new Statistika(false);
         stavyOsob = new ArrayList<>();
         priemerVytazenostObsluznychOnline = new ArrayList<>();
         priemerVytazenostPokladni = new ArrayList<>();
@@ -105,7 +97,7 @@ public class Stanok extends UdalostnaSimulacia{
         priemerVytazenostObsluznychOstatne = new ArrayList<>();
         for (int i = 0; i < pocetPokladni; i++) {
             priemerVytazenostPokladni.add(new Statistika(false));
-            priemerDlzkaRadovPriPokladniach.add(new Statistika(false));
+            priemerDlzkaRadovPriPokladniach.add(new Statistika(true));
         }
         for (int i = 0; i < obsluzneMiesta.getOnlineObsluzne().length; i++) {
             priemerVytazenostObsluznychOnline.add(new Statistika(false));
@@ -113,7 +105,11 @@ public class Stanok extends UdalostnaSimulacia{
         for (int i = 0; i < obsluzneMiesta.getNormalneObsluzne().length; i++) {
             priemerVytazenostObsluznychOstatne.add(new Statistika(false));
         }
-        priemerVytazenieAutomatu = new Statistika(false);
+        simCas = 0.0;
+        this.personIndex = 0;
+        automatIsEmpty = true;
+        udalostiQueue.add(new PrichodZakaznika(this, zaciatokCasu + nahodnyJav.getPrichodLudi()));
+
     }
 
 
@@ -131,7 +127,7 @@ public class Stanok extends UdalostnaSimulacia{
 
         for (int i = 0; i < pocetPokladni; i++) {
             priemerVytazenostPokladniCelkove.get(i).pridajZaznam(priemerVytazenostPokladni.get(i).getVytazenie(simCas - zaciatokCasu));
-            //priemerDlzkaRadovPriPokladniachCelkove.get(i).pridajZaznam(priemerDlzkaRadovPriPokladniach.get(i).vypocitaj());
+            priemerDlzkaRadovPriPokladniachCelkove.get(i).pridajZaznam(priemerDlzkaRadovPriPokladniach.get(i).vypocitaj());
         }
         for (int i = 0; i < obsluzneMiesta.getOnlineObsluzne().length; i++) {
             priemerVytazenostObsluznychOnlineCelkove.get(i).pridajZaznam(priemerVytazenostObsluznychOnline.get(i).getVytazenie(simCas-zaciatokCasu));
@@ -151,7 +147,7 @@ public class Stanok extends UdalostnaSimulacia{
         System.out.println("Vytazenie automatau:" + priemerVytazenieAutomatuCelkove.vypocitaj()*100);
         for (int i = 0; i < pocetPokladni; i++) {
             System.out.println(priemerVytazenostPokladniCelkove.get(i).vypocitaj()*100);
-            //priemerDlzkaRadovPriPokladniachCelkove.get(i).pridajZaznam(priemerDlzkaRadovPriPokladniach.get(i).vypocitaj());
+            priemerDlzkaRadovPriPokladniachCelkove.get(i).pridajZaznam(priemerDlzkaRadovPriPokladniach.get(i).vypocitaj());
         }
         for (int i = 0; i < obsluzneMiesta.getOnlineObsluzne().length; i++) {
             System.out.println(priemerVytazenostObsluznychOnlineCelkove.get(i).vypocitaj());
@@ -211,10 +207,6 @@ public class Stanok extends UdalostnaSimulacia{
         this.osobaUAutomatu = osobaUAutomatu;
     }
 
-    public void setPoslednyCasOdchodu(double poslednyCasOdchodu) {
-        this.poslednyCasOdchodu = poslednyCasOdchodu;
-    }
-
     public Statistika getPriemerCakanieVRadePredAutomatom() {
         return priemerCakanieVRadePredAutomatom;
     }
@@ -254,5 +246,49 @@ public class Stanok extends UdalostnaSimulacia{
 
     public ArrayList<Statistika> getPriemerVytazenostObsluznychOstatne() {
         return priemerVytazenostObsluznychOstatne;
+    }
+
+    public int getPersonIndex() {
+        return personIndex;
+    }
+
+    public Statistika getPriemerPocetLudiCelkovy() {
+        return priemerPocetLudiCelkovy;
+    }
+
+    public Statistika getPriemerCasVObchodeCelkovy() {
+        return priemerCasVObchodeCelkovy;
+    }
+
+    public Statistika getPriemerCakanieVRadePredAutomatomCalkovy() {
+        return priemerCakanieVRadePredAutomatomCalkovy;
+    }
+
+    public Statistika getPriemerPoslednyOdchod() {
+        return priemerPoslednyOdchod;
+    }
+
+    public Statistika getPriemerVytazenieAutomatuCelkove() {
+        return priemerVytazenieAutomatuCelkove;
+    }
+
+    public ArrayList<Statistika> getPriemerVytazenostPokladniCelkove() {
+        return priemerVytazenostPokladniCelkove;
+    }
+
+    public ArrayList<Statistika> getPriemerVytazenostObsluznychOnlineCelkove() {
+        return priemerVytazenostObsluznychOnlineCelkove;
+    }
+
+    public ArrayList<Statistika> getPriemerVytazenostObsluznychOstatneCelkove() {
+        return priemerVytazenostObsluznychOstatneCelkove;
+    }
+
+    public ArrayList<Statistika> getPriemerDlzkaRadovPriPokladniachCelkove() {
+        return priemerDlzkaRadovPriPokladniachCelkove;
+    }
+
+    public double getZaciatokCasu() {
+        return zaciatokCasu;
     }
 }

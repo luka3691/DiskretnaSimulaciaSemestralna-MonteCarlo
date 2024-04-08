@@ -25,10 +25,10 @@ private ArrayList<List<Double>> yValues;
     public GUIPorovnanie(int pocetObsluznych, int pocetReplikacii) {
         this.pocetObsluznych = pocetObsluznych;
         this.pocetReplikacii = pocetReplikacii;
-        JFrame frame = new JFrame("JTable Demo");
+        JFrame frame = new JFrame("Porovnanie");
         frame.setLayout(new BorderLayout());
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        chart = new XYChartBuilder().width(800).height(600).title(getClass().getSimpleName()).xAxisTitle("Replikácia").yAxisTitle("Čakanie v rade").build();
+        chart = new XYChartBuilder().width(800).height(600).title("Porovnanie závislosti počtu pokladní na dĺžku radu pred automatom.").xAxisTitle("Replikácia").yAxisTitle("Čakanie v rade").build();
         JPanel panel = new JPanel();
         chartPanel = new XChartPanel<>(chart);
         frame.add(chartPanel, BorderLayout.CENTER);
