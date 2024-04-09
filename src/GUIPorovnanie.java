@@ -91,7 +91,7 @@ private ArrayList<List<Double>> yValues;
             replicationCounter.set(i, replicationCounter.get(i) +1000);
             yValues.get(i).add(sim.getPriemerDlzkaRaduCelkovy().vypocitaj());
             chart.updateXYSeries(String.valueOf(tempPocetPokladni), xValues.get(i), yValues.get(i), null);
-            valueLabels.get(i).setText(tempPocetPokladni + " pokladna: " + String.valueOf(Math.round(sim.getPriemerDlzkaRaduCelkovy().vypocitaj()*1000.0)/1000.0));
+            valueLabels.get(i).setText(tempPocetPokladni + " pokladne: " + String.valueOf(Math.round(sim.getPriemerDlzkaRaduCelkovy().vypocitaj()*1000.0)/1000.0));
             chartPanel.revalidate();
             chartPanel.repaint();
         });

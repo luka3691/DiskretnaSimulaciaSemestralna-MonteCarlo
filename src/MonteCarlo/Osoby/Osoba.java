@@ -39,10 +39,6 @@ public class Osoba {
         return typZakaznika;
     }
 
-    public void setTypZakaznika(TypZakaznika typZakaznika) {
-        this.typZakaznika = typZakaznika;
-    }
-
     public int getIdPokladne() {
         return idPokladne;
     }
@@ -88,7 +84,7 @@ public class Osoba {
         } else if (stav == StavyOsoby.IDE_SI_PRE_NADROZMERNY_TOVAR) {
             infoOZakaz.add("Spätné prevzatie nadrozmerného");
         } else {
-            infoOZakaz.add("Prichod");
+            infoOZakaz.add("Koniec zadavania do automatu");
         }
         return infoOZakaz;
     }

@@ -3,7 +3,7 @@ package MonteCarlo;
 import java.util.ArrayList;
 
 public class Statistika {
-    //potrebana dlzka radu, cas v celom obchode, pocet ludi
+
     private int pocetZaznamov;
     private double maxVaha;
     private double maxVahaSquared;

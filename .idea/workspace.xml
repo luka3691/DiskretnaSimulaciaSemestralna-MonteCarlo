@@ -1,31 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Semstralna2:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="25cfbe7a-dbb8-442f-9067-a1df747ef9f5" name="Changes" comment="Statistika fronta pred automatom funkcne">
-      <change afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/KoniecČasu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Chart.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUIPorovnanie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUIPorovnanie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUIapp.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUIapp.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUIapp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUIapp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/NahodneJavy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/NahodneJavy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/ObsluzneMiesta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/ObsluzneMiesta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Osoby/Osoba.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Osoby/Osoba.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Predajna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Predajna.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/DiskretneRovnomerne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/DiskretneRovnomerne.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/Exponencialne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/Exponencialne.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/Poissonovo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/Triangularne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/Triangularne.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Stanok.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Predajna.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/SpojiteEmpiricke.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Rozdelenia/SpojiteEmpiricke.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/SimJadro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/SimJadro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Statistika.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Statistika.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/KoniecObsluhy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/KoniecObsluhy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/KoniecPlatenia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/KoniecPlatenia.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/KoniecZdavaniaDoAutomatu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/KoniecZdavaniaDoAutomatu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/PrevzatieNadrozmernehoTovaru.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/PrevzatieNadrozmernehoTovaru.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/PrichodZakaznika.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/PrichodZakaznika.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/ZačiatokObsluhy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/ZačiatokObsluhy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/ZačiatokPlatenia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/ZačiatokPlatenia.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/ZačiatokZadavaniaDoAutomatu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonteCarlo/Udalosti/ZačiatokZadavaniaDoAutomatu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testRozdelení/Kresba (3).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testRozdelení/exponencialne.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testRozdelení/spojiteempiricke.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testRozdelení/triangular.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,32 +79,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Chart.executor": "Debug",
-    "Application.GUIapp.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.Unnamed.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15625",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Chart.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.GUIapp.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SputenieGUIapp.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15625&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
@@ -110,40 +118,6 @@
       <recent name="MonteCarlo.Osoby" />
       <recent name="MonteCarlo.Udalosti" />
     </key>
-  </component>
-  <component name="RunManager" selected="Application.Unnamed">
-    <configuration name="Chart" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Chart" />
-      <module name="Semstralna2" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Semstralna2" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="GUIapp" />
-      <module name="Semstralna2" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.Unnamed" />
-      <item itemvalue="Application.Chart" />
-      <item itemvalue="Application.Main" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Chart" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -170,7 +144,10 @@
       <workItem from="1712252813248" duration="14852000" />
       <workItem from="1712312575212" duration="3673000" />
       <workItem from="1712487718527" duration="4612000" />
-      <workItem from="1712570683602" duration="33392000" />
+      <workItem from="1712570683602" duration="39468000" />
+      <workItem from="1712644214062" duration="182000" />
+      <workItem from="1712644419589" duration="1333000" />
+      <workItem from="1712657776959" duration="1866000" />
     </task>
     <task id="LOCAL-00001" summary="Funkcny stanok">
       <option name="closed" value="true" />
@@ -316,7 +293,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712591241396</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Statistika fronta pred automatom funkcne">
+      <option name="closed" value="true" />
+      <created>1712607226714</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1712607226714</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -368,12 +353,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/GUIapp.java</url>
-          <line>117</line>
+          <line>118</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/GUIapp.java</url>
-          <line>191</line>
+          <line>192</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

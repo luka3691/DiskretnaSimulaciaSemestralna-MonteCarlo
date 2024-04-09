@@ -49,14 +49,6 @@ public class ObsluzneMiesta {
     public int getIDVolnaPokladna(Osoba osoba) {
         if (osoba.getTypZakaznika() == TypZakaznika.ONLINE){
             return getVolneOnline();
-            /*
-            int id = getVolneOnline();
-            if (id != -1) {
-                onlineQueue.add(osoba);
-            } else {
-
-            }
-            */
         } else {
             return getVolneNormalne();
         }

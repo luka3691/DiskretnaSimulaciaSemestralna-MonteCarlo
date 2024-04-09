@@ -23,6 +23,7 @@ public class ZačiatokPlatenia extends Udalost {
         predajna.getPokladne().getPokladne()[osoba.getIdPokladne()] = false;
         osoba.setStav(StavyOsoby.JE_OBSLUHOVANY_V_POKLADNI);
         double trvanieUdalosti = predajna.getNahodnyJav().getTravniePlatby();
+        //naplanuj koniec platenia
         predajna.naplanujUdalost(new KoniecPlatenia(jadro, predajna.getSimCas() + trvanieUdalosti, osoba));
         predajna.getPriemerVytazenostPokladni().get(osoba.getIdPokladne()).pridajZaznam(trvanieUdalosti);
         predajna.setStavyOsob(osoba.toArray());

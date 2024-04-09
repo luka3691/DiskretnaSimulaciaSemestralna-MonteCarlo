@@ -7,7 +7,7 @@ public class Exponencialne implements IRozdelenie{
     private double lambda;
     private int seed = 1;
     public Exponencialne(double lambda) {
-        this.random = new Random();
+        this.random = new Random(this.seed);
         this.lambda = lambda;
     }
     public Exponencialne(double lambda, int seed) {

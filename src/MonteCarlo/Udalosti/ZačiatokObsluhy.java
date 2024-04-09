@@ -29,6 +29,7 @@ public class ZačiatokObsluhy extends Udalost {
         osoba.setIdObsluzneho(IDPokladne);
         osoba.setStav(StavyOsoby.JE_OBSLUHOVANY);
         this.osoba.setNadrozmernaObjednavka(predajna.getNahodnyJav().getNechaTovarNaObsluznom());
+        //naplanuj koniec obsluhy
         if (osoba.getTypZakaznika() == TypZakaznika.ONLINE) {
             double trvanieUdalosti = predajna.getNahodnyJav().getCasNaPripravenieOnline();
             predajna.naplanujUdalost(new KoniecObsluhy(predajna, predajna.getSimCas() +trvanieUdalosti, osoba));
@@ -38,13 +39,9 @@ public class ZačiatokObsluhy extends Udalost {
             predajna.naplanujUdalost(new KoniecObsluhy(predajna, predajna.getSimCas() + trvanieUdalosti, osoba));
             predajna.getPriemerVytazenostObsluznychOstatne().get(IDPokladne).pridajZaznam(trvanieUdalosti);
         }
+        //ak rad pred automatom  nie je prazdny a zmesti sa do radu pred obsluzne miesta a automat je aktualne prazdny, tak naplanuj zadavanie do automatu
         if (!predajna.getOsobyQueue().isEmpty() && predajna.getObsluzneMiesta().zmestiSa(predajna.getAutomatIsEmpty()) && predajna.getAutomatIsEmpty()) {
             Osoba novaOsoba = predajna.getOsobyQueue().poll();
-            if (osoba.getTypZakaznika() == TypZakaznika.ONLINE) {
-                predajna.getPriemerDlzkaRaduPredObsluzOnline().pridajZaznam(predajna.getObsluzneMiesta().getOnlineQueue().size(), predajna.getSimCas());
-            } else {
-                predajna.getPriemerDlzkaRaduPredObsluzNormal().pridajZaznam(predajna.getObsluzneMiesta().getOsobyQueue().size(), predajna.getSimCas());
-            }
             predajna.naplanujUdalost(new ZačiatokZadavaniaDoAutomatu(predajna, predajna.getSimCas(), novaOsoba));
         }
         predajna.setStavyOsob(osoba.toArray());

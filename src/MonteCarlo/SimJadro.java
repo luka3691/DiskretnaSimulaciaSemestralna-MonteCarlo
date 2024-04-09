@@ -54,14 +54,6 @@ public abstract class SimJadro {
 
     abstract void afterRep();
 
-    public int getNumberOfReplications() {
-        return numberOfReplications;
-    }
-
-    public void stopSimulaciu() {
-        stopRequested = true;
-    }
-
     public void setSlowRequested(boolean slowRequested) {
         this.slowRequested = slowRequested;
     }

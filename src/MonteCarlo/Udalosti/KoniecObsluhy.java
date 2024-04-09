@@ -18,9 +18,7 @@ public class KoniecObsluhy extends Udalost{
     @Override
     public void execute() {
         Predajna predajna = (Predajna)jadro;
-        //tu treba zaznamenat cas v obchode do statistiky
         osoba.setStav(StavyOsoby.V_RADE_PRED_POKLADNOU);
-        //stanok.getPriemerCasVObchode().pridajZaznam(stanok.getSimCas() - osoba.getCasPrichodu());
         int idPokladneNaZaradenie = predajna.getPokladne().getIDPokladne(predajna.getNahodnyJav().getNahodnePostavenieDoPokladne());
         boolean[] obsluzneDanehoTypu;
         if (osoba.getTypZakaznika() == TypZakaznika.ONLINE) {
@@ -30,13 +28,11 @@ public class KoniecObsluhy extends Udalost{
         }
         obsluzneDanehoTypu[osoba.getIdObsluzneho()] = !osoba.isNechalTovarNaVydajni();
         if (idPokladneNaZaradenie != -1) {
-            //pokladna je volna
-            //stanok.getPokladne().getPokladne()[idPokladneNaZaradenie] = false;
+            //nasla sa volna pokladna tak zarad osobu do tej pokladne
             predajna.naplanujUdalost(new ZačiatokPlatenia(predajna, predajna.getSimCas(), osoba, idPokladneNaZaradenie));
         } else {
-            //zaradenie do najkratsieho radu
+            //zarad osobu do najratsieho radu
             int idRaduNaZaradenie = predajna.getPokladne().getIDNajmensiehoRadu(predajna.getNahodnyJav().getNahodnePostavanieDoRadu());
-            //stanok.getPriemerDlzkaRadovPriPokladniach().get(idRaduNaZaradenie).pridajZaznam(stanok.getPokladne().getRady()[idRaduNaZaradenie].size(), stanok.getSimCas());
             predajna.getPokladne().getRady()[idRaduNaZaradenie].add(osoba);
             predajna.getPriemerDlzkaRadovPriPokladniach().get(idRaduNaZaradenie).pridajZaznam(predajna.getPokladne().getRady()[idRaduNaZaradenie].size(), predajna.getSimCas());
             osoba.setIdPokladne(idRaduNaZaradenie);
@@ -47,17 +43,16 @@ public class KoniecObsluhy extends Udalost{
         } else {
             queue = predajna.getObsluzneMiesta().getOsobyQueue();
         }
+        //naplanuj novu obsluhu ak nie je rad prazdny
         if (obsluzneDanehoTypu[osoba.getIdObsluzneho()] && !queue.isEmpty()) {
             Osoba novaOsoba = queue.poll();
-            //tu treba zaznamenat dlzku radu (pretoze sa meni velkost radu)
-            //stanok.getPriemerDlzkaRadu().pridajZaznam(stanok.getOsobyQueue().size(), stanok.getSimCas());
             int id = predajna.getObsluzneMiesta().getIDVolnaPokladna(novaOsoba);
             if (id != -1) {
+                //pokladna je volna
                 predajna.naplanujUdalost(new ZačiatokObsluhy(predajna, predajna.getSimCas(), novaOsoba, id));
             }
 
         }
         predajna.setStavyOsob(osoba.toArray());
-        //stanok.setAutomatIsEmpty(true);
     }
 }

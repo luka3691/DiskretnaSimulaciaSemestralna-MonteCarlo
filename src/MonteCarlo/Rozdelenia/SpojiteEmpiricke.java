@@ -12,7 +12,7 @@ public class SpojiteEmpiricke implements IRozdelenie{
     private int seed = 1;
 
     public SpojiteEmpiricke(List<Double[]> hranice, List<Double> pravdepodobnosti) {
-        this.random = new Random(seed);
+        this.random = new Random(this.seed);
         this.hranice = hranice;
         this.kumutativnePravdepodobnosti = new ArrayList<>();
 

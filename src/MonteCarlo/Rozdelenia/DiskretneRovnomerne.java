@@ -10,13 +10,13 @@ public class DiskretneRovnomerne implements IRozdelenie{
     public DiskretneRovnomerne(int min, int max) {
         this.min = min;
         this.max = max;
-        this.random = new Random(seed);
+        this.random = new Random(this.seed);
     }
 
     public DiskretneRovnomerne(int min, int max, int seed) {
         this.min = min;
         this.max = max;
-        this.random = new Random();
+        this.random = new Random(seed);
     }
 
     public double sample() {

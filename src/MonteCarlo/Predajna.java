@@ -218,20 +218,12 @@ public class Predajna extends UdalostnaSimulacia{
         return pokladne;
     }
 
-    public Osoba getOsobaUAutomatu() {
-        return osobaUAutomatu;
-    }
-
     public void setOsobaUAutomatu(Osoba osobaUAutomatu) {
         this.osobaUAutomatu = osobaUAutomatu;
     }
 
     public Statistika getPriemerCakanieVRadePredAutomatom() {
         return priemerCakanieVRadePredAutomatom;
-    }
-
-    public int getPocetObsluznych() {
-        return pocetObsluznych;
     }
 
     public int getPocetPokladni() {
@@ -267,9 +259,6 @@ public class Predajna extends UdalostnaSimulacia{
         return priemerVytazenostObsluznychOstatne;
     }
 
-    public int getPersonIndex() {
-        return personIndex;
-    }
 
     public Statistika getPriemerPocetLudiCelkovy() {
         return priemerPocetLudiCelkovy;
@@ -307,9 +296,6 @@ public class Predajna extends UdalostnaSimulacia{
         return priemerDlzkaRadovPriPokladniachCelkove;
     }
 
-    public double getZaciatokCasu() {
-        return zaciatokCasu;
-    }
 
     public ArrayList<Statistika> getPriemerDlzkaRadovPriPokladniach() {
         return priemerDlzkaRadovPriPokladniach;
@@ -341,5 +327,9 @@ public class Predajna extends UdalostnaSimulacia{
 
     public Statistika getPocetObsluzenychZakaznikovCelkove() {
         return pocetObsluzenychZakaznikovCelkove;
+    }
+
+    public double getZaciatokCasu() {
+        return zaciatokCasu;
     }
 }

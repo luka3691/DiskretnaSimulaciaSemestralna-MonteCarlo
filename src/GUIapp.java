@@ -60,6 +60,7 @@ public class GUIapp implements ISimDelegate {
     private JLabel dlzkyRadovPriPokladniachLabel;
     private JLabel dlzkyRadovPredObsluznymiLabel;
     private JLabel priemerObsluzenychLabel;
+    private JLabel vytazenostAutomatuLabel;
     private SimJadro pausedSim;
     int pocetPokladni;
     int pocetObsluz ;
@@ -209,19 +210,20 @@ public class GUIapp implements ISimDelegate {
             for (int i = 0; i < pocetPokladni; i++) {
                 pokladneModel.setValueAt(sim.getPokladne().getPokladne()[i], i, 1);
                 pokladneModel.setValueAt(sim.getPokladne().getRady()[i].size(), i, 2);
-                pokladneModel.setValueAt(Math.round(sim.getPriemerVytazenostPokladni().get(i).getVytazenie(sim.getSimCas())*100) + "%", i ,3);
+                pokladneModel.setValueAt(Math.round(sim.getPriemerVytazenostPokladni().get(i).getVytazenie(sim.getSimCas() - sim.getZaciatokCasu())*100) + "%", i ,3);
                 //pridat vytazenie
             }
             for (int i = 0; i < sim.getObsluzneMiesta().getOnlineObsluzne().length; i++) {
                 odberModel.setValueAt(sim.getObsluzneMiesta().getOnlineObsluzne()[i], i, 2);
-                odberModel.setValueAt(Math.round(sim.getPriemerVytazenostObsluznychOnline().get(i).getVytazenie(sim.getSimCas()) * 100) + "%", i, 3);
+                odberModel.setValueAt(Math.round(sim.getPriemerVytazenostObsluznychOnline().get(i).getVytazenie(sim.getSimCas() - sim.getZaciatokCasu()) * 100) + "%", i, 3);
             }
             for (int i = 0; i < sim.getObsluzneMiesta().getNormalneObsluzne().length; i++) {
                 odberModel.setValueAt(sim.getObsluzneMiesta().getNormalneObsluzne()[i], i+sim.getObsluzneMiesta().getOnlineObsluzne().length, 2);
-                odberModel.setValueAt(Math.round(sim.getPriemerVytazenostObsluznychOstatne().get(i).getVytazenie(sim.getSimCas()) * 100) + "%", i+sim.getObsluzneMiesta().getOnlineObsluzne().length, 3);
+                odberModel.setValueAt(Math.round(sim.getPriemerVytazenostObsluznychOstatne().get(i).getVytazenie(sim.getSimCas() - sim.getZaciatokCasu()) * 100) + "%", i+sim.getObsluzneMiesta().getOnlineObsluzne().length, 3);
 
             }
             obsadenyAutomatLabel.setText(String.valueOf(sim.getAutomatIsEmpty()));
+            vytazenostAutomatuLabel.setText(Math.round(sim.getPriemerVytazenieAutomatu().getVytazenie(sim.getSimCas() - sim.getZaciatokCasu())*100.0) + "%");
             pocetOnlineZakaznikovRad.setText(String.valueOf(sim.getObsluzneMiesta().getOnlineQueue().size()));
             pocetOstatnychZakaznikovRad.setText(String.valueOf(sim.getObsluzneMiesta().getOsobyQueue().size()));
             try {

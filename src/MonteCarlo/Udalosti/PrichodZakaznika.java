@@ -13,19 +13,20 @@ public class PrichodZakaznika extends Udalost {
     @Override
     public void execute() {
         Predajna predajna = (Predajna)jadro;
-        Osoba osoba = new Osoba(StavyOsoby.PRICHOD, predajna.getSimCas(), predajna.getNewPersonIndex(), predajna.getNahodnyJav().getTypZakaznika());
+        Osoba osoba = new Osoba(StavyOsoby.V_RADE_PRED_AUTOMATOM, predajna.getSimCas(), predajna.getNewPersonIndex(), predajna.getNahodnyJav().getTypZakaznika());
 
         osoba.setStav(StavyOsoby.V_RADE_PRED_AUTOMATOM);
         predajna.getPriemerDlzkaRadu().pridajZaznam(predajna.getOsobyQueue().size(), predajna.getSimCas());
-
+        //ak je automat prazdny a zmesti sa do radu pred obsluznymi rovno ho zarad do automatu inak ho zarad do radu
         if (predajna.getAutomatIsEmpty() && predajna.getObsluzneMiesta().zmestiSa(predajna.getAutomatIsEmpty())) {
             predajna.naplanujUdalost(new ZačiatokZadavaniaDoAutomatu(predajna, predajna.getSimCas(), osoba));
             predajna.setAutomatIsEmpty(false);
         } else {
             predajna.getOsobyQueue().add(osoba);
+            osoba.setStav(StavyOsoby.V_RADE_PRED_AUTOMATOM);
             predajna.getPriemerDlzkaRadu().pridajZaznam(predajna.getOsobyQueue().size(), predajna.getSimCas());
         }
-
+        //naplanuj dalsi prichod
         double dalsiPrichod = predajna.getSimCas() + predajna.getNahodnyJav().getPrichodLudi();
         if (dalsiPrichod < predajna.getKoniecCasu()) {
             predajna.naplanujUdalost(new PrichodZakaznika(jadro, dalsiPrichod));

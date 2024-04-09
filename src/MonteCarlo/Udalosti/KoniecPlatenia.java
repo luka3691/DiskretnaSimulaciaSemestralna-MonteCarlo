@@ -15,8 +15,8 @@ public class KoniecPlatenia extends Udalost{
     @Override
     public void execute() {
         Predajna predajna = (Predajna)jadro;
-        //tu treba zaznamenat cas v obchode do statistiky
         predajna.getPokladne().getPokladne()[osoba.getIdPokladne()] = true;
+        //ak si nechal tovar na vydajni musi si pre neho ist
         if (osoba.isNechalTovarNaVydajni()) {
             osoba.setStav(StavyOsoby.IDE_SI_PRE_NADROZMERNY_TOVAR);
             predajna.naplanujUdalost(new PrevzatieNadrozmernehoTovaru(predajna, predajna.getSimCas() + predajna.getNahodnyJav().getSpatnePrevzatieTovaru(), osoba));
@@ -26,8 +26,8 @@ public class KoniecPlatenia extends Udalost{
             int pocetObsluzenych = predajna.getPocetObsluzenychZakaznikov() + 1;
             predajna.setPocetObsluzenychZakaznikov(pocetObsluzenych);
         }
+        //ak nie je prazdny rad pred danou pokladnou tak naplanuj zaciatok platenia
         if (!predajna.getPokladne().getRady()[osoba.getIdPokladne()].isEmpty()) {
-            //stanok.getPriemerDlzkaRadovPriPokladniach().get(osoba.getIdPokladne()).pridajZaznam(stanok.getPokladne().getRady()[osoba.getIdPokladne()].size(), stanok.getSimCas());
             Osoba osobaNova = predajna.getPokladne().getRady()[osoba.getIdPokladne()].poll();
             predajna.getPriemerDlzkaRadovPriPokladniach().get(osoba.getIdPokladne()).pridajZaznam(predajna.getPokladne().getRady()[osoba.getIdPokladne()].size(), predajna.getSimCas());
             predajna.naplanujUdalost(new ZačiatokPlatenia(predajna, predajna.getSimCas(), osobaNova, osoba.getIdPokladne()));
